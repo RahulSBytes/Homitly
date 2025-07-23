@@ -1,0 +1,10 @@
+<div>
+        <a class="new" href="/listing/new">add new listing</a>
+        <% for(let item of data){ %>
+            <a href="listing/<%=item._id %>">
+                <p>
+                    <%= item.title %>
+                </p>
+            </a>
+            <% } %>
+    </div>

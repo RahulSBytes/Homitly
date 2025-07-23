@@ -1,0 +1,42 @@
+# Node modules (dependencies)
+node_modules/
+
+# Build output
+dist/
+build/
+
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# VS Code settings
+.vscode/
+
+# Coverage directory (for tests)
+coverage/
+
+# Optional: yarn / pnpm
+yarn-debug.log*
+yarn-error.log*
+.pnp
+.pnp.js
+
+# IDE files
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# Misc
+*.tgz

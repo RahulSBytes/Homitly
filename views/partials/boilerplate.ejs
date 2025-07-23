@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+header, footer{
+    background-color: lightblue;
+}
+
+    .flash{
+        background-color: lightcoral;
+    }
+
+    form{
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        width: 50%;
+    }
+</style>
+
+<link  rel="stylesheet" type="text/css" href="/rating.css">
+
+</head>
+
+
+<body>
+
+    <%- include("header.ejs"); %>
+
+        <!-- flash msg -->
+        <% if(success && success.length){ %>
+            <p class="flash"><%= success %></p>
+                <% } %>
+
+        <% if(error && error.length){ %>
+            <p class="flash"><%= error %></p>
+                <% } %>
+
+
+                    <main>
+                        <%- body %>
+                    </main>
+                    <%- include("footer.ejs"); %>
+
+</body>
+
+</html>

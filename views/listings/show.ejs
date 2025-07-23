@@ -1,0 +1,61 @@
+<i>host:: <%= data.host.username %></i>
+
+<p>
+    <%= data.title %>
+</p>
+
+<% if(currUser && currUser._id.equals(data.host._id)){ %>
+    <a href="/listing/<%= data._id %>/edit">update</a>
+    <form action="/listing/<%= data._id %>?_method=DELETE" method="post">
+        <button type="submit">delete</button>
+    </form>
+    <% } %> <!-- we must handle these thing in frontend as well as backend -->
+
+
+
+        <h2>review section</h2>
+        <% if(currUser){ %>
+
+            <form class="review-form" action="/listing/<%= data._id %>/review" method="post">
+                <fieldset class="starability-coinFlip">
+                    <input type="radio" id="no-rate" class="input-no-rate" name="rating" value="1" checked
+                        aria-label="No rating." />
+                    <input type="radio" id="first-rate1" name="rating" value="1" />
+                    <label for="first-rate1" title="Terrible">1 star</label>
+                    <input type="radio" id="first-rate2" name="rating" value="2" />
+                    <label for="first-rate2" title="Not good">2 stars</label>
+                    <input type="radio" id="first-rate3" name="rating" value="3" />
+                    <label for="first-rate3" title="Average">3 stars</label>
+                    <input type="radio" id="first-rate4" name="rating" value="4" />
+                    <label for="first-rate4" title="Very good">4 stars</label>
+                    <input type="radio" id="first-rate5" name="rating" value="5" />
+                    <label for="first-rate5" title="Amazing">5 stars</label>
+                </fieldset>
+                <textarea cols="15" rows="8" name="comment" id="" required></textarea>
+
+
+                <button type="submit">submit</button>
+            </form>
+
+            <% } %>
+
+                <div class="review-box-parent">
+                    <div class="center">
+                        <% for(item of data.comments){ %>
+                            <div class="review-box">
+                                <h5>@<%= item.author.username %>
+                                </h5>
+                                <i>
+                                    <%= item.comment %>
+                                </i>
+                                <p class="starability-result" data-rating="<%= item.rating %>">
+                                </p>
+                                <form action="/listing/<%= data._id %>/review/<%= item._id %>?_method=DELETE"
+                                    method="post">
+                                    <button>Delete</button>
+                                </form>
+                            </div>
+                            <% } %>
+                    </div>
+
+                </div>
