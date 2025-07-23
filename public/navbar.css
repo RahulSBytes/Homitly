@@ -20,6 +20,7 @@ nav {
   font-weight: 500;
 }
 
+
 .navs{
   margin-right: 1rem;
 }
@@ -35,13 +36,19 @@ nav {
   padding: 12px 20px;
   border: none;
   border-radius: 8px;
+  color: #121212;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
   outline: none;
-  font-size: 16px;
+  font-size: 0.9rem;
+}
+
+.o{
+  color:#ff385c ;
 }
 
 .search {
   display: flex;
+  transform: translate(2.5rem);
   align-items: center;
   gap: 10px;
   /* border: 2px solid green; */
@@ -61,4 +68,9 @@ nav {
   width: 5.5rem;
   color: white;
   padding-inline: 5px;
+}
+
+
+div.navs > a:hover{
+  color: #ff385c !important;
 }

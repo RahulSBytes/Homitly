@@ -1,0 +1,77 @@
+.show-image {
+  width: 100%;
+  max-height: 20rem;
+  box-sizing: border-box;
+  border-radius: 18px;
+  object-fit: cover;
+}
+
+.show-section {
+  display: flex;
+  max-width: 80%;
+  margin: 0 auto;
+  flex-direction: column;
+  /* border: 2px solid green; */
+  padding-inline: 1rem;
+}
+
+.space-details {
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.buttons > *,
+.submit-review {
+  padding: 2px 0;
+  width: 4.3rem;
+  border: none;
+  background-color: #e9e9e9;
+  text-decoration: none;
+  text-align: center;
+  border-radius: 5px;
+}
+
+.buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: baseline;
+  flex-direction: row;
+}
+
+.submit-review {
+  font-size: 1rem;
+}
+
+.description > p {
+  padding: 1rem 0;
+}
+
+[name="comment"] {
+  width: 100%;
+  resize: none;
+  /* outline: 1px solid grey; */
+  padding: 7px;
+  border-radius: 0;
+}
+
+.center {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: space-between;
+  margin-top: 2rem;
+}
+
+.review-box {
+  display: flex;
+  gap: 5px;
+  width: 45%;
+  flex-direction: column;
+  /* border: 2px solid red; */
+}
+
+.delete-review{
+  border: 0;
+  font-size: 0.7rem;
+  padding: 2px 8px;
+}

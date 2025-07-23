@@ -1,5 +1,5 @@
 
-    <form action="/listing/<%= data._id %>?_method=PATCH" method="post">
+    <form class="new-listing" action="/listing/<%= data._id %>?_method=PATCH" method="post">
         <label>Title</label>
         <input type="text" name="title" value="<%= data.title %>" required />
 
@@ -27,7 +27,7 @@
         <label>Cleaning Fee ($)</label>
         <input type="number" name="cleaningFee" min="0" value="<%= data.cleaningFee %>" />
 
-        <img src="<%= data.photos[0] %>" width="400" alt="home-snapshot">
+        <img src="<%= data.photos.path %>" width="100" alt="home-snapshot">
 
         <label>link of Photos</label>
         <input type="text" name="photos" value="<%= data.photos[0] %>" />

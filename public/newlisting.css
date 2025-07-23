@@ -1,0 +1,42 @@
+.new-listing{
+    display: flex;
+    flex-direction: column;
+    /* border: 2px solid red; */
+    width: 80%;
+    margin: 0 auto;
+}
+
+.new-listing>input{
+    margin-bottom: 1rem;
+    height: 1.4rem;
+}
+
+.new-listing>button{
+    background-color: #ff385c ;
+border: 0;
+padding: 4px 0;
+color: white;
+/* margin-top: 1rem; */
+font-weight: bold;
+width: 6.5rem;
+}
+
+select, textarea{
+    margin-bottom: 1rem;
+    
+}
+
+textarea{
+    height: 6rem;
+    resize: none;
+    padding: 5px;
+}
+
+select{
+    height: 1.4rem;
+}
+
+label{
+    margin-bottom: 0.2rem;
+    font-size: 0.9rem;
+}

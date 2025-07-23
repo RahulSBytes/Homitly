@@ -18,6 +18,7 @@ export async function index(req, res) {
   res.render("listings/index", { data, avgrating });
 }
 
+
 export async function createListingGet(req, res) {
   // no need to use async or to wrap with asyncWrapper coz no async task is being done here.
   res.render("listings/new");
@@ -47,6 +48,7 @@ export async function showListing(req, res) {
       },
     })
     .populate("host"); // chainning posible
+
 
   if (!data) {
     req.flash("error", "accessed listing is not available");

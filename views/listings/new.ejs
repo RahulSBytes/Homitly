@@ -1,5 +1,5 @@
 
-  <form action="/listing" method="POST" enctype="multipart/form-data">
+  <form class="new-listing" action="/listing" method="POST" enctype="multipart/form-data">
     <label>Title</label>
     <input type="text" name="title" placeholder="Cozy Mountain Cabin" required />
 
@@ -7,7 +7,7 @@
     <textarea name="description" placeholder="Describe your property..." required></textarea>
 
     <label>Property Type</label>
-    <select name="propertyType" required>
+    <select  name="propertyType" required>
       <option value="Apartment">Apartment</option>
       <option value="House">House</option>
       <option value="Villa">Villa</option>
@@ -53,8 +53,8 @@
     <label>Cleaning Fee ($)</label>
     <input type="number" name="cleaningFee" min="0" value="0" />
 
-    <label>upload image</label>
+    <label>Upload image</label>
     <input type="file" name="photos" />
 
-    <button type="submit">Create Listing</button>
+    <button type="submit">Submit</button>
   </form>
