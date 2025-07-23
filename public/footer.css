@@ -1,0 +1,14 @@
+footer{
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    align-items: center;
+    flex-direction: column;
+    height: 8rem;
+    background-color: #f7f7f7;
+}
+
+footer>p{
+    font-size: 0.9rem;
+
+}

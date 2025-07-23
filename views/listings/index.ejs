@@ -1,10 +1,13 @@
-<div>
-        <a class="new" href="/listing/new">add new listing</a>
-        <% for(let item of data){ %>
-            <a href="listing/<%=item._id %>">
+<section>
+    <% for(let item of data){ %>
+        <a class="box" href="listing/<%=item._id %>">
+            <img class="listing-img" src="<%= item.photos.path %>" alt="item.photos.filename">
+            <div class="text">
                 <p>
                     <%= item.title %>
                 </p>
-            </a>
-            <% } %>
-    </div>
+                <p class="price-text">&#8377;<%= item.pricePerNight %> per night &bull; <b>&#9733;</b>  <%= avgrating %></p>
+            </div>
+        </a>
+        <% } %>
+</section>
