@@ -11,13 +11,13 @@ import methodOverride from "method-override";
 import ExpressError from "./utility/errorClass.js";
 import listing from "./routes/listings.js";
 import review from "./routes/reviews.js";
-import user from './routes/user.js'
+import user from "./routes/user.js";
 import session from "express-session";
 import flash from "connect-flash";
-import expressLayouts from 'express-ejs-layouts'
+import expressLayouts from "express-ejs-layouts";
 import userModel from "./models/User.js";
 import passport from "passport";
-import LocalStrategy from 'passport-local'
+import LocalStrategy from "passport-local";
 const app = express();
 
 // ------------------ path setting-----------
@@ -33,7 +33,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.set("view engine", "ejs");
 app.use(expressLayouts);
-app.set('layout', 'partials/boilerplate');
+app.set("layout", "partials/boilerplate");
 app.use(methodOverride("_method"));
 app.use(flash());
 
@@ -50,7 +50,6 @@ app.use(
   })
 );
 
-
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -58,7 +57,6 @@ passport.use(new LocalStrategy(userModel.authenticate()));
 passport.serializeUser(userModel.serializeUser());
 passport.deserializeUser(userModel.deserializeUser());
 // note : flash & passport also uses session
-
 
 //database connection
 
@@ -76,9 +74,8 @@ connectDB()
 
 app.get("/", (req, res) => {
   // no need to use async or to wrap with asyncWrapper coz no async task is being done here.
-  res.send('working');
+  res.redirect("/listing");
 });
-
 
 
 app.use((req, res, next) => {
@@ -88,12 +85,9 @@ app.use((req, res, next) => {
   next();
 });
 
-
 app.use("/listing", listing);
 app.use("/listing/:id/review", review);
 app.use("/user", user);
-
-
 
 app.use((req, res, next) => {
   next(new ExpressError(404, "Page Not Found"));
@@ -103,6 +97,6 @@ app.use((req, res, next) => {
 
 app.use((err, req, res, next) => {
   let { status = 500, message = "something broke" } = err;
-  console.log(err);
+  // console.log(err);
   res.status(status).send(message);
 });

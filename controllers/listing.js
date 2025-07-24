@@ -53,7 +53,7 @@ export async function showListing(req, res) {
     res.redirect("/listing");
   }
 
-  // console.log(data)
+  // console.log(data.comments[0].author.avatar)
   res.render("listings/show", { data });
 }
 
