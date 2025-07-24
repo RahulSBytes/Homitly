@@ -10,14 +10,13 @@ export async function index(req, res) {
     for (let i = 0; i < data[0].comments.length; i++) {
       sum = data[0].comments[i].rating + sum;
     }
-   avgrating = sum/data[0].comments.length
+    avgrating = sum / data[0].comments.length;
   }
   // console.log(avgrating);
 
   // console.log(data[0].comments[0].rating);
   res.render("listings/index", { data, avgrating });
 }
-
 
 export async function createListingGet(req, res) {
   // no need to use async or to wrap with asyncWrapper coz no async task is being done here.
@@ -49,11 +48,12 @@ export async function showListing(req, res) {
     })
     .populate("host"); // chainning posible
 
-
   if (!data) {
     req.flash("error", "accessed listing is not available");
     res.redirect("/listing");
   }
+
+  // console.log(data)
   res.render("listings/show", { data });
 }
 
@@ -70,9 +70,19 @@ export async function editListing(req, res) {
 
 export async function updateListing(req, res) {
   let { id } = req.params;
-  const data = await listingModel.findByIdAndUpdate(id, req.body, {
-    new: true,
-  });
+  let { path, filename } = req.file;
+  // console.log("...file...", req.file, "...body....", req.body);
+  const data = await listingModel.findByIdAndUpdate(
+    id,
+    { ...req.body },
+    { new: true }
+  );
+
+  if (typeof req.file !== "undefined") {
+    data.photos = { path, filename };
+    await data.save();
+  }
+
   req.flash("success", "listing updated");
   res.redirect(`/listing/${id}`);
 }

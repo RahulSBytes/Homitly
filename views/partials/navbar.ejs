@@ -1,7 +1,10 @@
 <nav>
     <a href="/listing" class="logo">H<span class="o">o</span>mitly</a>
-    <div class="search"><input type="text" name="" id=""> <button class="search-btn" type="submit"><i
-                class="fa-solid fa-magnifying-glass fa-sm search-icon"></i>Search</button></div>
+    <form method="get" action="#" class="search">
+        <input type="text" name="" id=""> 
+        <button class="search-btn" type="submit">
+            <i class="fa-solid fa-magnifying-glass fa-sm search-icon"></i>Search</button>
+    </form>
     <div class="navs">
         <% if(currUser){ %>
             <a href="/listing/new"><b>List your home</b> </a>
@@ -9,8 +12,9 @@
             <% } else { %>
                 <a href="/user"><b>Sign up</b></a>
                 <a href="/user/login">Login</a>
-
+                
                 <% } %>
+                <a href="/listing">Home</a>
 
     </div>
 </nav>

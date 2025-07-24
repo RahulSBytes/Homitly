@@ -67,6 +67,8 @@
                     <button class="submit-review" type="submit">submit</button>
                 </form>
 
+
+
                 <% } %>
 
                     <div class="review-box-parent">
@@ -100,6 +102,33 @@
                         </div>
 
                     </div>
+                    <div class="map-section">
+                        <h3>Where you'll be</h3>
+                        <p><%= data.address %></p>
+                        <div id="map"></div>
+                        <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+                        <script>
+                            // Initialize the map
 
+                           const lat = <%- data.location.lat %>;
+                            const lng = <%- data.location.lng %>;
+                            
+                            var map = L.map('map', {
+                                center: [lat,lng],
+                                zoom: 13
+                            }).setView([lat,lng], 13); // Delhi example
 
+                            // Add OpenStreetMap tiles
+                            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                                maxZoom: 19,
+                                attribution: '&copy; OpenStreetMap contributors'
+                            }).addTo(map);
+
+                            // Add a marker
+                            L.marker([lat,lng]).addTo(map)
+                                .bindPopup("here you'll find")
+                                .openPopup();
+                        </script>
+
+                    </div>
 </section>

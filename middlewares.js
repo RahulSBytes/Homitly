@@ -51,8 +51,9 @@ export async function isReviewAuthor(req, res, next) {
 
 export function validateListing(req, res, next) {
   let { error } = listingJoiSchema.validate(req.body, { abortEarly: false });
+  console.log(error)
   if (!error) {
-    next(new ExpressError(404, error.details[0].message));
+    next(new ExpressError(404, "error.details[0].message"));
   } else {
     next();
   }
@@ -61,9 +62,10 @@ export function validateListing(req, res, next) {
 
 export function validateUser(req, res, next) {
   let { error } = userJoiSchema.validate(req.body, { abortEarly: false });
+// console.log(req.body, req.file)
   if (error) {
     // next(new ExpressError(404, error.details[0].message));
-    req.flash("error", error.details[0].message);
+    req.flash("error", "error.details[0].message");
     res.redirect("/user");
   } else {
     next();

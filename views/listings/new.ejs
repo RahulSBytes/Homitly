@@ -1,12 +1,15 @@
 
   <form class="new-listing" action="/listing" method="POST" enctype="multipart/form-data">
-    <label>Title</label>
+        <h2 class="form-title">Provide Us Details</h2>
+    
+    
+    <label>title</label>
     <input type="text" name="title" placeholder="Cozy Mountain Cabin" required />
 
-    <label>Description</label>
+    <label>description</label>
     <textarea name="description" placeholder="Describe your property..." required></textarea>
 
-    <label>Property Type</label>
+    <label>property Type</label>
     <select  name="propertyType" required>
       <option value="Apartment">Apartment</option>
       <option value="House">House</option>
@@ -15,45 +18,45 @@
       <option value="Other">Other</option>
     </select>
 
-    <label>Room Type</label>
+    <label>room type</label>
     <select name="roomType" required>
       <option value="Entire place">Entire place</option>
       <option value="Private room">Private room</option>
       <option value="Shared room">Shared room</option>
     </select>
 
-    <label>Max Guests</label>
+    <label>max guests</label>
     <input type="number" name="maxGuests" min="1" required />
 
-    <label>Bedrooms</label>
+    <label>bedrooms</label>
     <input type="number" name="bedrooms" min="0" required />
 
-    <label>Beds</label>
+    <label>beds</label>
     <input type="number" name="beds" min="0" required />
 
-    <label>Bathrooms</label>
+    <label>bathrooms</label>
     <input type="number" name="bathroom" min="0" />
 
-    <label>Amenities (comma separated)</label>
+    <label>amenities (comma separated)</label>
     <input type="text" name="amenities" placeholder="WiFi, Parking, Pool" />
 
 
-    <label>Address</label>
+    <label>address</label>
     <input type="text" name="address" placeholder="enter address" />
 
-    <label>Latitude</label>
+    <label>latitude</label>
     <input type="text" name="location[lat]" placeholder="Latitude (optional)" />
 
-    <label>Longitude</label>
+    <label>longitude</label>
     <input type="text" name="location[lng]" placeholder="Longitude (optional)" />
 
-    <label>Price Per Night ($)</label>
+    <label>price Per Night ($)</label>
     <input type="number" name="pricePerNight" min="0" required />
 
-    <label>Cleaning Fee ($)</label>
+    <label>cleaning Fee ($)</label>
     <input type="number" name="cleaningFee" min="0" value="0" />
 
-    <label>Upload image</label>
+    <label>upload image</label>
     <input type="file" name="photos" />
 
     <button type="submit">Submit</button>

@@ -37,6 +37,7 @@ router.patch(
   "/:id",
   isLoggedIn,
   isOwner,
+  upload.single('photos'),
   validateListing,
   asyncWrapper(updateListing)
 );

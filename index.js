@@ -76,7 +76,7 @@ connectDB()
 
 app.get("/", (req, res) => {
   // no need to use async or to wrap with asyncWrapper coz no async task is being done here.
-  res.send("working");
+  res.send('working');
 });
 
 
@@ -92,6 +92,8 @@ app.use((req, res, next) => {
 app.use("/listing", listing);
 app.use("/listing/:id/review", review);
 app.use("/user", user);
+
+
 
 app.use((req, res, next) => {
   next(new ExpressError(404, "Page Not Found"));

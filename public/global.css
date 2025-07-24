@@ -20,3 +20,12 @@ main{
     margin: 0 auto;
     /* border: 2px solid green; */
 }
+
+
+.flash{
+    width: 100%;
+    background-color: #ffb5c2;
+    /* padding-left: 2rem; */
+    font-size: 0.9rem;
+    padding: 2px 2rem ;
+}

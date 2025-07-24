@@ -1,36 +1,38 @@
+<form class="new-listing" action="/listing/<%= data._id %>?_method=PATCH" method="post" enctype="multipart/form-data">
+    <label>Title</label>
+    <input type="text" name="title" value="<%= data.title %>" required />
 
-    <form class="new-listing" action="/listing/<%= data._id %>?_method=PATCH" method="post">
-        <label>Title</label>
-        <input type="text" name="title" value="<%= data.title %>" required />
+    <label>Description</label>
+    <textarea name="description" rows="7" required><%= data.description %></textarea>
 
-        <label>Description</label>
-        <textarea name="description" rows="7" required><%= data.description %></textarea>
+    <label>Max Guests</label>
+    <input type="number" name="maxGuests" min="1" value="<%= data.maxGuests %>" required />
 
-        <label>Max Guests</label>
-        <input type="number" name="maxGuests" min="1" value="<%= data.maxGuests %>" required />
+    <label>Bedrooms</label>
+    <input type="number" name="bedrooms" min="0" value="<%= data.bedrooms %>" required />
 
-        <label>Bedrooms</label>
-        <input type="number" name="bedrooms" min="0" value="<%= data.bedrooms %>" required />
+    <label>Beds</label>
+    <input type="number" name="beds" min="0" value="<%= data.beds %>" required />
 
-        <label>Beds</label>
-        <input type="number" name="beds" min="0" value="<%= data.beds %>" required />
+    <label>Amenities (comma separated)</label>
+    <input type="text" name="amenities" value="<%= data.amenities.join(', ') %>" />
 
-        <label>Amenities (comma separated)</label>
-        <input type="text" name="amenities" value="<%= data.amenities.join(', ') %>" />
+    <label>Address</label>
+    <input type="text" name="address" placeholder="enter address" value="<%= data.address %>" />
 
-        <label>Address</label>
-        <input type="text" name="address" placeholder="enter address" value="<%= data.address %>"/>
+    <label>Price Per Night ($)</label>
+    <input type="number" name="pricePerNight" min="0" value="<%= data.pricePerNight %>" required />
 
-        <label>Price Per Night ($)</label>
-        <input type="number" name="pricePerNight" min="0" value="<%= data.pricePerNight %>" required />
+    <label>Cleaning Fee ($)</label>
+    <input type="number" name="cleaningFee" min="0" value="<%= data.cleaningFee %>" />
 
-        <label>Cleaning Fee ($)</label>
-        <input type="number" name="cleaningFee" min="0" value="<%= data.cleaningFee %>" />
+    <img src="<%= data.photos.path %>" width="100" alt="home-snapshot">
 
-        <img src="<%= data.photos.path %>" width="100" alt="home-snapshot">
+    <label>upload image</label>
+    <input type="file" name="photos" />
 
-        <label>link of Photos</label>
-        <input type="text" name="photos" value="<%= data.photos[0] %>" />
+    <button type="submit">Update Listing</button>
+</form>
 
-        <button type="submit">Update Listing</button>
-    </form>
+
+

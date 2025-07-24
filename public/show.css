@@ -4,11 +4,12 @@
   box-sizing: border-box;
   border-radius: 18px;
   object-fit: cover;
+  object-position: center 75%;
 }
 
 .show-section {
   display: flex;
-  max-width: 80%;
+  max-width: 75%;
   margin: 0 auto;
   flex-direction: column;
   /* border: 2px solid green; */
@@ -70,8 +71,26 @@
   /* border: 2px solid red; */
 }
 
-.delete-review{
+.delete-review {
   border: 0;
   font-size: 0.7rem;
   padding: 2px 8px;
+}
+
+#map {
+  height: 270px;
+  width: 100%;
+  /* border: 2px solid #d8d8d8; */
+}
+
+.map-section > h3 {
+  font-size: 22px;
+  color: #121212;
+}
+
+.map-section > p {
+  margin: 5px 0 1rem 0;
+  font-size: 1rem;
+  font-weight: 400;
+  color: #313131;
 }
