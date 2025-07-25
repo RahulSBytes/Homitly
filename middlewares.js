@@ -1,7 +1,12 @@
 import listingModel from "./models/Listing.js";
 import reviewModel from "./models/Review.js";
 import ExpressError from "./utility/errorClass.js";
-import { listingJoiSchema, userJoiSchema, reviewJoiSchema } from "./utility/joivalidator.js";
+import {
+  listingJoiSchema,
+  userJoiSchema,
+  reviewJoiSchema,
+  bookingJoiSchema,
+} from "./utility/joivalidator.js";
 
 export function isLoggedIn(req, res, next) {
   if (!req.isAuthenticated()) {
@@ -11,9 +16,6 @@ export function isLoggedIn(req, res, next) {
   }
   next();
 }
-
-
-
 
 export function storeReturnTo(req, res, next) {
   if (req.session.returnTo) res.locals.returnTo = req.session.returnTo;
@@ -36,7 +38,6 @@ export async function isOwner(req, res, next) {
   next();
 }
 
-
 export async function isReviewAuthor(req, res, next) {
   let { id, reviewId } = req.params;
   const reviewData = await reviewModel.findById(reviewId);
@@ -48,36 +49,42 @@ export async function isReviewAuthor(req, res, next) {
   next();
 }
 
-
 export function validateListing(req, res, next) {
   let { error } = listingJoiSchema.validate(req.body, { abortEarly: false });
-  console.log(error)
+  // console.log(error)
   if (!error) {
-    next(new ExpressError(404, "error.details[0].message"));
+    next(new ExpressError(404, error.message));
   } else {
     next();
   }
 }
 
+export function validateBooking(req, res, next) {
+  const { error } = bookingJoiSchema.validate(req.body, { abortEarly: false });
+  if (error) {
+    req.flash("error", error.message);
+    return res.redirect("/bookings");
+  } else {
+    next();
+  }
+}
 
 export function validateUser(req, res, next) {
   let { error } = userJoiSchema.validate(req.body, { abortEarly: false });
-// console.log(req.body, req.file)
   if (error) {
-    // next(new ExpressError(404, error.details[0].message));
-    req.flash("error", "error.details[0].message");
+    req.flash("error", error.message);
     res.redirect("/user");
   } else {
     next();
   }
 }
 
-
 export function validateReview(req, res, next) {
   let { error } = reviewJoiSchema.validate(req.body, { abortEarly: false });
   if (!error) {
-    throw new ExpressError(404, "error validating schema :: review");
+    throw new ExpressError(404, `error validating schema ::${error.message}`);
   } else {
     next();
   }
 }
+

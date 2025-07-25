@@ -1,12 +1,45 @@
 
+booking schema
+checkin date
+checkout Data
+number of guests (should i allow more guests than allowed?)
+mobile no:
+
+
+Cancellation Policy
+
+Guests can cancel their reservation for a full refund up to 48 hours before check-in, provided the cancellation occurs at least 7 days before check-in.
+If a guest cancels less than 7 days before check-in, they will receive a 50% refund for all nights booked.
+If a guest cancels after check-in, unused nights are non-refundable.
+Service fees may be non-refundable.
+
+
+Ground rules
+We ask every guest to remember a few simple things about what makes a great guest.
+Follow the house rules
+Treat your Host’s home like your own
+
+
+a disabled input field with 'testuser@upi' text
+
+
+
+what date input returns
+http://127.0.0.1:3000/test?inputdate=2025-07-10
+
+
+
+| HTTP Method | Route           | Purpose                                                  |
+| ----------- | --------------- | -------------------------------------------------------- |
+| `GET`       | `/bookings`     | Get all bookings (for admin or host)                 |
+| `GET`       | `/bookings/:id` | Get a single booking by ID                           |
+| `POST`      | `/bookings`     | **Create** a new booking                                 |
+| `DELETE`    | `/bookings/:id` | **Cancel** a booking                                     |
 
 
 
 
-
-
-
-
+@@@@@@@@@@@@@@@@@@@@@@@@@@
 
 models/
 listings model

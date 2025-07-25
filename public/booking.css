@@ -1,0 +1,54 @@
+.booking {
+  /* border: 2px solid red; */
+  width: 70%;
+  margin: 1rem auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.booking > form {
+  display: flex;
+  /* gap: 10px; */
+  flex-direction: column;
+}
+
+.booking p {
+  font-size: 0.8rem;
+  color: #212121;
+}
+
+.booking > form > input {
+  margin-bottom: 10px;
+  margin-top: 2px;
+}
+
+.caution {
+  display: flex;
+}
+
+.caution > i {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-inline: 10px;
+}
+
+
+.booking> form> div{
+  margin-bottom: 1.2rem;
+}
+
+.booking> form> label{
+  font-weight: 600;
+}
+
+.booking> form> button{
+  border: none;
+  background-color: #121212;
+  color: white;
+  padding: 6px;
+}
+
+.policy{
+  margin-top: 1rem;
+}

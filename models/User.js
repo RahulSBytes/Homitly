@@ -1,13 +1,31 @@
+// import { ref } from "joi";
 import mongoose from "mongoose";
-import passportLocalMongoose from 'passport-local-mongoose'
+import passportLocalMongoose from "passport-local-mongoose";
+import bookingModel from "./Booking.js";
 
 const userSchema = mongoose.Schema({
-  avatar: String,
+  avatar: {
+    type: String,
+    default:
+      "https://st4.depositphotos.com/9998432/24428/v/450/depositphotos_244284796-stock-illustration-person-gray-photo-placeholder-man.jpg",
+  },
   email: {
     type: String,
     required: true,
     trim: true,
   },
+  wishlist: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "listingModel",
+    },
+  ],
+  bookings: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "bookingModel",
+    },
+  ],
 });
 
 /*

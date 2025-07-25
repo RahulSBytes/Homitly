@@ -47,3 +47,32 @@ export const userJoiSchema = Joi.object({
   email: Joi.string().email().required(),
   password: Joi.string().required().min(6).max(25),
 });
+
+// ---------------booking
+
+export const bookingJoiSchema = Joi.object({
+  checkin: Joi.date().required().min("now").messages({
+    "date.base": "Check-in date must be a valid date",
+    "date.min": "Check-in date must be today or in the future",
+  }),
+
+  checkout: Joi.date()
+    .required()
+    .min("now")
+    .greater(Joi.ref("checkin"))
+    .messages({
+      "date.base": "checkout date must be a valid date",
+      "date.min": "checkout date must be today or in the future"
+    }),
+
+  mobileNumber: Joi.string()
+    .required()
+    .pattern(/^\+\d{1,3}\d{6,14}$/)
+    .messages({
+      "string.base": "Mobile number must be a string",
+      "string.pattern.base":
+        "Mobile number must be in format +[country code][number] (e.g., +1234567890)",
+    }),
+
+  numberOfGuests: Joi.number().integer().min(1).max(20),
+});

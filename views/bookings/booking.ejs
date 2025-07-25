@@ -1,0 +1,37 @@
+<section class="booking">
+    <h2>Request to book</h2>
+    <form action="/bookings/<%= listingId %>" method="post">
+        <label for="">check-in</label>
+        <input type="date" name="checkin">
+        <label for="">checkout</label>
+        <input type="date" name="checkout">
+        <label for="">guests</label>
+        <input type="number" name="numberOfGuests">
+        <label for="">Phone number</label>
+        <p>Add and confirm your phone number to get trip updates.</p>
+        <input type="text" name="mobileNumber">
+
+        <div class="policy">
+            <h3>Cancellation policy</h3>
+            <p>Guests can cancel their reservation for a full refund up to 48 hours before check-in, provided the
+                cancellation occurs at least 7 days before check-in. If a guest cancels less than 7 days before
+                check-in, they will receive a 50% refund for all nights
+                booked. If a guest cancels after check-in, unused nights are non-refundable. Service fees may be
+                non-refundable.</p>
+        </div>
+
+        <div class="rule">
+            <h3>Ground rules</h3>
+            <p>We ask every guest to remember a few simple things about what makes a great guest. Follow the house rules
+                Treat your Host’s home like your own</p>
+        </div>
+        <div class="caution">
+            <i class="fa-regular fa-clock fa-spin fa-lg" style="color: #e2acbe;"></i>
+            <p>The Host will need to accept this request. You’ll pay now, but will get a full refund if your reservation
+                isn’t confirmed within 24 hours.</p>
+        </div>
+
+        <button type="submit">proceed</button>
+    </form>
+
+</section>

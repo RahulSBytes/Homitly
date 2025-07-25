@@ -12,6 +12,7 @@ import ExpressError from "./utility/errorClass.js";
 import listing from "./routes/listings.js";
 import review from "./routes/reviews.js";
 import user from "./routes/user.js";
+import booking from "./routes/booking.js"
 import session from "express-session";
 import flash from "connect-flash";
 import expressLayouts from "express-ejs-layouts";
@@ -88,6 +89,7 @@ app.use((req, res, next) => {
 app.use("/listing", listing);
 app.use("/listing/:id/review", review);
 app.use("/user", user);
+app.use("/bookings", booking);
 
 app.use((req, res, next) => {
   next(new ExpressError(404, "Page Not Found"));

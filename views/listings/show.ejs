@@ -42,6 +42,9 @@
 
             </div>
 
+
+            <a href="/bookings/<%= data._id %>">reserve</a>
+
             <hr>
 
             <section class="review-section">
@@ -78,7 +81,7 @@
 
                         <div class="review-box-parent">
 
-                            <% if(data.comments.length===0){ %>
+                            <% if(data.comments && data.comments.length===0){ %>
                                 <p>No review posted</p>
 
                                 <% } else{%>

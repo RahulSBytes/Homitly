@@ -6,14 +6,14 @@ export async function index(req, res) {
   // calculaating average rating
   let avgrating = 0;
   let sum = 0;
-  if (!(data[0].comments.length === 0)) {
+  /*
+  if (!(data[0].comments && data[0].comments.length === 0)) {
     for (let i = 0; i < data[0].comments.length; i++) {
       sum = data[0].comments[i].rating + sum;
     }
     avgrating = sum / data[0].comments.length;
   }
-  // console.log(avgrating);
-
+ */
   // console.log(data[0].comments[0].rating);
   res.render("listings/index", { data, avgrating });
 }
