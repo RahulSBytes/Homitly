@@ -85,6 +85,7 @@ export const listingSchema = mongoose.Schema({
   },
 });
 
+
 listingSchema.post("findOneAndDelete", async function (doc) {
   if (doc.comments.length) {
     // console.log(doc) // the whole document whose comments to be deleted
@@ -92,6 +93,7 @@ listingSchema.post("findOneAndDelete", async function (doc) {
     // console.log(result);  //{ comment: 'this is', rating: '3' }
   }
 });
+
 
 const listingModel = mongoose.model("listing", listingSchema);
 

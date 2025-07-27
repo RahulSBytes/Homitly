@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirm Your Booking</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background-color: #f7f7f7;
+            color: #222222;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0px auto;
+            padding: 0 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px 0;
+        }
+
+        .header h1 {
+            color: #222222;
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .header p {
+            color: #717171;
+            font-size: 16px;
+        }
+
+        .confirmation-card {
+            background: white;
+            border-radius: 12px;
+            border: 1px solid #dddddd;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+
+        .booking-header {
+            background: linear-gradient(135deg, #FF5A5F 0%, #ff385c 100%);
+            color: white;
+            padding: 20px 30px;
+        }
+
+        .booking-id {
+            font-size: 14px;
+            opacity: 0.9;
+            margin-bottom: 5px;
+        }
+
+        .property-name {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .property-type {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+
+        .booking-details {
+            padding: 30px;
+        }
+
+        .detail-section {
+            margin-bottom: 25px;
+            padding-bottom: 25px;
+            border-bottom: 1px solid #ebebeb;
+        }
+
+        .detail-section:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+
+        .section-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #222222;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .section-title::before {
+            content: '';
+            width: 4px;
+            height: 20px;
+            background: #FF5A5F;
+            margin-right: 10px;
+            border-radius: 2px;
+        }
+
+        .detail-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .detail-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .detail-label {
+            font-size: 14px;
+            color: #717171;
+            margin-bottom: 4px;
+            font-weight: 500;
+        }
+
+        .detail-value {
+            font-size: 16px;
+            color: #222222;
+            font-weight: 600;
+        }
+
+        .stay-info {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 20px;
+            background: #f7f7f7;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border: 1px solid #ebebeb;
+        }
+
+        .stay-detail {
+            text-align: center;
+        }
+
+        .stay-detail .number {
+            font-size: 24px;
+            font-weight: 700;
+            color: #FF5A5F;
+            display: block;
+        }
+
+        .stay-detail .label {
+            font-size: 14px;
+            color: #717171;
+            margin-top: 5px;
+        }
+
+        .amenities-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .amenity-tag {
+            background: #f7f7f7;
+            color: #222222;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 500;
+            border: 1px solid #dddddd;
+        }
+
+        .pricing-summary {
+            background: #f7f7f7;
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 20px;
+            border: 1px solid #ebebeb;
+        }
+
+        .price-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+            padding: 8px 0;
+        }
+
+        .price-row.total {
+            border-top: 2px solid #dddddd;
+            margin-top: 15px;
+            padding-top: 15px;
+            font-weight: 700;
+            font-size: 18px;
+            color: #222222;
+        }
+
+        .price-label {
+            color: #717171;
+        }
+
+        .price-value {
+            font-weight: 600;
+            color: #222222;
+        }
+
+        .host-contact {
+            background: #fff8e5;
+            border-left: 4px solid #ffd60a;
+            padding: 20px;
+            border-radius: 0 8px 8px 0;
+            margin-top: 20px;
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+            justify-content: center;
+        }
+
+        .btn {
+            padding: 14px 32px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #FF5A5F 0%, #ff385c 100%);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #ff385c 0%, #e31c23 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255, 90, 95, 0.3);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: #222222;
+            border: 2px solid #dddddd;
+        }
+
+        .btn-secondary:hover {
+            background: #f7f7f7;
+            border-color: #bbbbbb;
+        }
+
+        .address-section {
+            background: #f7f7f7;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 10px;
+            border: 1px solid #ebebeb;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 15px;
+            }
+
+            .booking-details {
+                padding: 20px;
+            }
+
+            .detail-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stay-info {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
+            .contact-info {
+                grid-template-columns: 1fr;
+            }
+
+            .action-buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Confirm Your Booking</h1>
+            <p>Please review your booking details before confirming</p>
+        </div>
+
+        <div class="confirmation-card">
+            <div class="booking-header">
+                <div class="property-name"><%= data._doc.title %></div>
+            </div>
+
+<!-- res.redirect(`/success?message=Booking%20complete`); -->
+
+            <div class="booking-details">
+                <!-- Stay Information -->
+                <div class="detail-section">
+                    <div class="section-title">Your Stay</div>
+                    <div class="stay-info">
+                        <div class="stay-detail">
+                            <span class="number">
+                                <%= data.numberofdays %>
+                            </span>
+                            <span class="label">Nights</span>
+                        </div>
+                        <div class="stay-detail">
+                            <span class="number">
+                                <%= data.numberOfGuests %>
+                            </span>
+                            <span class="label">Guests</span>
+                        </div>
+                        <div class="stay-detail">
+                            <span class="number">
+                                <%= data._doc.bedrooms %>
+                            </span>
+                            <span class="label">Bedrooms</span>
+                        </div>
+                    </div>
+
+                    <div class="detail-grid">
+                        <div class="detail-item">
+                            <span class="detail-label">Check-in</span>
+                            <span class="detail-value">
+                                <%= data.checkin %>
+                            </span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Check-out</span>
+                            <span class="detail-value">
+                                <%= data.checkout %>
+                            </span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Room Type</span>
+                            <span class="detail-value">
+                                <%= data._doc.roomType %>
+                            </span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Property Type</span>
+                            <span class="detail-value">
+                                <%= data._doc.propertyType %>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Property Details -->
+                <div class="detail-section">
+                    <div class="section-title">Property Details</div>
+                    <div class="detail-grid">
+                        <div class="detail-item">
+                            <span class="detail-label">Bedrooms</span>
+                            <span class="detail-value">
+                                <%= data._doc.bedrooms %>
+                            </span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Beds</span>
+                            <span class="detail-value">
+                                <%= data._doc.beds %>
+                            </span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Bathrooms</span>
+                            <span class="detail-value">
+                                <%= data._doc.bathroom %>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="detail-item" style="margin-top: 15px;">
+                        <span class="detail-label">Description</span>
+                        <span class="detail-value">
+                            <%= data._doc.description %>
+                        </span>
+                    </div>
+
+                    <div class="address-section">
+                        <div class="detail-item">
+                            <span class="detail-label">Address</span>
+                            <span class="detail-value">
+                                <%= data._doc.address %>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Amenities -->
+                <div class="detail-section">
+                    <div class="section-title">Amenities</div>
+                    <div class="amenities-list">
+                        <% for(let item of data._doc.amenities){ %>
+                            <span><%= item %></span>
+                            <% } %>
+                    </div>
+                </div>
+
+                <!-- Pricing -->
+                <div class="detail-section">
+                    <div class="section-title">Pricing Summary</div>
+                    <div class="pricing-summary">
+                        <div class="price-row">
+                            <span class="price-label">₹<%= data._doc.pricePerNight %> × <%= data.numberofdays %> nights</span>
+                            <span class="price-value"><%=  data._doc.pricePerNight * data.numberofdays %></span>
+                        </div>
+                        <div class="price-row">
+                            <span class="price-label">Cleaning Fee</span>
+                            <span class="price-value"><%= data._doc.cleaningFee %></span>
+                        </div>
+                        <div class="price-row">
+                            <span class="price-label">Service Fee</span>
+                            <span class="price-value">₹300</span>
+                        </div>
+                        <div class="price-row">
+                            <span class="price-label">Taxes</span>
+                            <span class="price-value">₹<%= tax %></span>
+                        </div>
+                        <div class="price-row total">
+                            <span class="price-label">Payable Amount</span>
+                            <span class="price-value">₹<%= data.payableAmount + tax %></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Host Contact -->
+                <div class="host-contact">
+                    <div class="section-title" style="margin-bottom: 10px;">Host Contact Information</div>
+                    <div class="contact-info">
+                        <div class="detail-item">
+                            <span class="detail-label">Host Name</span>
+                            <span class="detail-value"><%= data._doc.host.username %></span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Email</span>
+                            <span class="detail-value"><%= data._doc.host.email %></span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Phone Number</span>
+                            <span class="detail-value">+91 234 543 5734</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="action-buttons">
+                    <!-- <button class="btn btn-secondary">Modify Booking</button> -->
+                    <form action="/bookings/create" method="post">
+                        <button class="btn btn-primary" type="submit">Confirm booking</button>
+                    </form>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

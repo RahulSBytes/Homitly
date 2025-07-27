@@ -14,6 +14,8 @@ const bookingSchema = mongoose.Schema({
     type: Number,
     required: true,
   },
+  payableAmount: Number,
+  numberOfDays: Number,
   mobileNumber: {
     type: String,
     required: true,
@@ -21,12 +23,12 @@ const bookingSchema = mongoose.Schema({
   },
   userid: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "userModel",
+    ref: "User",
   },
   listingid: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "listingModel",
-    required: true
+    ref: "listing",
+    required: true,
   },
   bookedOn: {
     type: Date,

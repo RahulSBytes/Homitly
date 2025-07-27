@@ -82,7 +82,7 @@ app.get("/", (req, res) => {
 app.use((req, res, next) => {
   res.locals.success = req.flash("success");
   res.locals.error = req.flash("error");
-  res.locals.currUser = req.user; //now current user's info will be available to every view
+  res.locals.currUser = req.user; //now current user's info will be every request this is done by passportjs when user logs in || 
   next();
 });
 

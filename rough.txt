@@ -1,4 +1,125 @@
 
+....... {
+  checkin: 2025-07-27T00:00:00.000Z,
+  checkout: 2025-07-31T00:00:00.000Z,
+  numberOfGuests: 3,
+  mobileNumber: '+912345435734',
+  _id: new ObjectId('68843b0a22a96ad2e870016d'),
+  bookedOn: 2025-07-26T02:18:50.750Z,
+  __v: 0
+
+
+  userid: {
+    _id: new ObjectId('6883283a7a556e00e6ddee9e'),
+    avatar: 'https://res.cloudinary.com/dgmgecezm/image/upload/v1753425978/cozystay/ccoihtlwimtwa62vvke9.jpg',
+    email: 'r@gmail.com',
+    wishlist: [],
+
+
+    bookings: [
+      new ObjectId('68832b9f6672443eb70eeea9'),
+      new ObjectId('68832b9f6672443eb70eeea9'),
+      new ObjectId('688332161b41d81aeb70984e'),
+      new ObjectId('68835f61ccb7f4e26477059d'),
+      new ObjectId('68836097ee78b98af7b968ff'),
+      new ObjectId('688431442a661a1a4839289d'),
+      new ObjectId('688432329c1b5aad4e7934d2'),
+      new ObjectId('6884346c094ecbeaa49e7a6f'),
+      new ObjectId('688434f99df68c67e54b17b5')
+    ],
+    username: 'rahul',
+    __v: 9
+  },
+
+
+
+  listingid: {
+    location: { lat: 26.7606, lng: -87.6298 },
+    photos: {
+      path: 'https://res.cloudinary.com/dgmgecezm/image/upload/v1753462280/cozystay/dewsv93pmoqtx6j9if4e.jpg',
+      filename: 'cozystay/dewsv93pmoqtx6j9if4e'
+    },
+    _id: new ObjectId('6883b6078a0a296e41468ffe'),
+    title: 'cozy',
+    description: 'this is my home',
+    propertyType: 'Apartment',
+    roomType: 'Shared room',
+    maxGuests: 2,
+    bedrooms: 2,
+    beds: 2,
+    bathroom: 3,
+    amenities: [ 'WiFi, Washer, Dryer, gyser' ],
+    address: 'dff',
+    pricePerNight: 34,
+    cleaningFee: 3,
+    host: new ObjectId('6883283a7a556e00e6ddee9e'),
+    comments: [],
+    averageRating: 0,
+    reviewCount: 0,
+    createdAt: 2025-07-25T16:51:19.569Z,
+    __v: 0
+  },
+
+
+
+}
+
+    host: new ObjectId('6883283a7a556e00e6ddee9e'),
+    comments: [],
+    averageRating: 0,
+    reviewCount: 0,
+    createdAt: 2025-07-25T16:51:19.569Z,
+    __v: 0
+  },
+  _id: new ObjectId('68843b0a22a96ad2e870016d'),
+  bookedOn: 2025-07-26T02:18:50.750Z,
+  __v: 0
+    host: new ObjectId('6883283a7a556e00e6ddee9e'),
+    comments: [],
+    averageRating: 0,
+    reviewCount: 0,
+    createdAt: 2025-07-25T16:51:19.569Z,
+    __v: 0
+    host: new ObjectId('6883283a7a556e00e6ddee9e'),
+    comments: [],
+    averageRating: 0,
+    host: new ObjectId('6883283a7a556e00e6ddee9e'),
+    host: new ObjectId('6883283a7a556e00e6ddee9e'),
+    comments: [],
+    averageRating: 0,
+    host: new ObjectId('6883283a7a556e00e6ddee9e'),
+    comments: [],
+    averageRating: 0,
+    comments: [],
+    averageRating: 0,
+    averageRating: 0,
+    reviewCount: 0,
+    createdAt: 2025-07-25T16:51:19.569Z,
+    __v: 0
+  },
+  _id: new ObjectId('68843b0a22a96ad2e870016d'),
+  bookedOn: 2025-07-26T02:18:50.750Z,
+  __v: 0
+}
+  },
+  _id: new ObjectId('68843b0a22a96ad2e870016d'),
+  bookedOn: 2025-07-26T02:18:50.750Z,
+  __v: 0
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 booking schema
 checkin date
 checkout Data
