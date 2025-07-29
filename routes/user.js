@@ -17,7 +17,7 @@ router.post(
   upload.single("avatar"),
   validateUser,
   asyncWrapper(async (req, res, next) => {
-    console.log(req.file, ".......", req.body);
+    // console.log(req.file, ".......", req.body);
     const { username, email, password } = req.body;
     const newUser = new userModel({ username, email, avatar: req.file.path });
     const registeredUser = await userModel.register(newUser, password);

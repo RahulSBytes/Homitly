@@ -29,7 +29,7 @@ export const listingJoiSchema = Joi.object({
   pricePerNight: Joi.number().min(0).required(),
   cleaningFee: Joi.number().min(0).default(0),
 
-  photos: Joi.array().items(Joi.string().uri()).default([]),
+  photos: Joi.array().items(Joi.string().uri()).required(),
 });
 
 // -------------- review schema

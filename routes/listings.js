@@ -15,7 +15,7 @@ import {
   showListing,
   updateListing,
 } from "../controllers/listing.js";
-import { cloudinary, storage } from "../cloudConfig.js";
+import { storage } from "../cloudConfig.js";
 import multer  from 'multer'
 const upload = multer({ storage })
 

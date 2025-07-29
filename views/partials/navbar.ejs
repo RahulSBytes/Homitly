@@ -1,21 +1,26 @@
 <nav>
     <a href="/listing" class="logo">H<span class="o">o</span>mitly</a>
-    <form method="get" action="#" class="search">
-        <input type="text" name="" id=""> 
-        <button class="search-btn" type="submit">
-            <i class="fa-solid fa-magnifying-glass fa-sm search-icon"></i>Search</button>
-    </form>
-    <div class="navs">
-        <% if(currUser){ %>
-            <a href="/bookings"><b>Booking</b> </a>
-            <a href="/listing/new"><b>List your home</b> </a>
-            <a href="/user/logout">Logout</a>
-            <% } else { %>
-                <a href="/user"><b>Sign up</b></a>
-                <a href="/user/login">Login</a>
-                
-                <% } %>
-                <a href="/listing">Home</a>
+    <% if(isHome===true){ %>
 
-    </div>
+        <form method="get" action="/search" class="search">
+            <input type="text" name="q" id="" required>
+            <button class="search-btn" type="submit">
+                <i class="fa-solid fa-magnifying-glass fa-sm search-icon"></i>Search</button>
+        </form>
+        <% } %>
+
+
+            <div class="navs">
+                <% if(currUser){ %>
+                    <a href="/bookings"><b>Booking</b> </a>
+                    <a href="/listing/new"><b>List your home</b> </a>
+                    <a href="/user/logout">Logout</a>
+                    <% } else { %>
+                        <a href="/user"><b>Sign up</b></a>
+                        <a href="/user/login">Login</a>
+
+                        <% } %>
+                            <a href="/listing">Home</a>
+
+            </div>
 </nav>

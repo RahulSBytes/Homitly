@@ -62,15 +62,19 @@ export const listingSchema = mongoose.Schema({
     default: 0,
   },
   photos: {
-    path:String,
-    filename: String
+    path:{
+      type: String,
+      required:true
+    },
+    filename: String,
   },
   host: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
     required: true,
   },
-  comments: [{ type: mongoose.Schema.Types.ObjectId, ref: "reviewModel" }],
+  comments: [{ type: mongoose.Schema.Types.ObjectId,
+     ref: "reviewModel" }],
   averageRating: {
     type: Number,
     default: 0,

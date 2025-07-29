@@ -1,0 +1,286 @@
+    <style>
+        body {
+            font-family: 'Circular', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+            background-color: #f7f7f7;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: #ff385c;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+        }
+
+        .nav-links a {
+            color: #222222;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 16px;
+            transition: color 0.2s ease;
+        }
+
+        .nav-links a:hover {
+            color: #ff385c;
+        }
+
+        /* Main Content */
+        .main-content {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 60px 24px;
+        }
+
+        .error-container {
+            max-width: 600px;
+            text-align: center;
+            background: white;
+            padding: 80px 60px;
+            border-radius: 16px;
+            box-shadow: 0 2px 16px rgba(0, 0, 0, 0.08);
+        }
+
+        .error-illustration {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto 40px;
+            background: linear-gradient(135deg, #ff385c10, #ff385c05);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .error-illustration::before {
+            content: '';
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, #ff385c, #e61e4d);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .error-illustration::after {
+            content: '404';
+            position: absolute;
+            font-size: 48px;
+            font-weight: 800;
+            color: white;
+        }
+
+        .error-title {
+            font-size: 32px;
+            font-weight: 600;
+            color: #222222;
+            margin-bottom: 16px;
+            line-height: 1.2;
+        }
+
+        .error-subtitle {
+            font-size: 20px;
+            color: #717171;
+            margin-bottom: 32px;
+            font-weight: 400;
+        }
+
+        .error-description {
+            font-size: 16px;
+            color: #717171;
+            line-height: 1.5;
+            margin-bottom: 48px;
+        }
+
+        /* Action Buttons */
+        .action-section {
+            margin-bottom: 48px;
+        }
+
+        .primary-actions {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            margin-bottom: 32px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 14px 24px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            min-width: 140px;
+            justify-content: center;
+        }
+
+        .btn-primary {
+            background-color: #ff385c;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: #e31c5f;
+            transform: translateY(-1px);
+        }
+
+        .btn-secondary {
+            background-color: white;
+            color: #222222;
+            border: 1px solid #dddddd;
+        }
+
+        .btn-secondary:hover {
+            border-color: #222222;
+            transform: translateY(-1px);
+        }
+
+        /* Quick Links */
+        .quick-links {
+            border-top: 1px solid #ebebeb;
+            padding-top: 32px;
+        }
+
+        .quick-links h3 {
+            font-size: 18px;
+            font-weight: 600;
+            color: #222222;
+            margin-bottom: 20px;
+        }
+
+        .links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 16px;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .quick-link {
+            color: #717171;
+            text-decoration: none;
+            padding: 12px 16px;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+            font-size: 14px;
+            text-align: center;
+            border: 1px solid #ebebeb;
+        }
+
+        .quick-link:hover {
+            background-color: #f7f7f7;
+            color: #ff385c;
+            border-color: #ff385c;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+
+            .error-container {
+                padding: 60px 40px;
+                margin: 20px;
+            }
+
+            .error-title {
+                font-size: 28px;
+            }
+
+            .error-subtitle {
+                font-size: 18px;
+            }
+
+            .primary-actions {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 280px;
+            }
+
+            .links-grid {
+                grid-template-columns: 1fr;
+                max-width: 280px;
+            }
+
+
+        }
+
+        @media (max-width: 480px) {
+            .main-content {
+                padding: 40px 16px;
+            }
+
+            .error-container {
+                padding: 40px 24px;
+            }
+
+            .error-illustration {
+                width: 160px;
+                height: 160px;
+                margin-bottom: 32px;
+            }
+
+            .error-illustration::before {
+                width: 100px;
+                height: 100px;
+            }
+
+            .error-illustration::after {
+                font-size: 36px;
+            }
+        }
+    </style>
+
+
+
+    <main class="main-content">
+        <div class="error-container">
+            <div class="error-illustration"></div>
+            
+            <h1 class="error-title">Page not found</h1>
+            <h2 class="error-subtitle">We can't find that page</h2>
+            
+            <p class="error-description">
+                Sorry, the page you are looking for doesn't exist or has been moved. 
+                Here are some helpful links to get you back on track.
+            </p>
+
+            <div class="action-section">
+                <div class="primary-actions">
+                    <a href="/" class="btn btn-primary">Go to homepage</a>
+                    <button onclick="history.back()" class="btn btn-secondary">Go back</button>
+                </div>
+            </div>
+
+            <div class="quick-links">
+                <h3>Popular pages</h3>
+                <div class="links-grid">
+                    <a href="/search" class="quick-link">Search properties</a>
+                    <a href="/bookings" class="quick-link">My bookings</a>
+                    <a href="/help" class="quick-link">Help center</a>
+                    <a href="/contact" class="quick-link">Contact support</a>
+                </div>
+            </div>
+        </div>
+    </main>

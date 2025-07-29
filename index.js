@@ -12,6 +12,7 @@ import ExpressError from "./utility/errorClass.js";
 import listing from "./routes/listings.js";
 import review from "./routes/reviews.js";
 import user from "./routes/user.js";
+import search from "./routes/search.js"
 import booking from "./routes/booking.js"
 import session from "express-session";
 import flash from "connect-flash";
@@ -71,6 +72,7 @@ connectDB()
     console.log("error occured on listening :: ", err);
   });
 
+
 //routes
 
 app.get("/", (req, res) => {
@@ -79,14 +81,16 @@ app.get("/", (req, res) => {
 });
 
 
-app.use((req, res, next) => {
+app.use((req, res, next) => {  // contains the variables that you want to be available to all the request/views/routes
   res.locals.success = req.flash("success");
   res.locals.error = req.flash("error");
-  res.locals.currUser = req.user; //now current user's info will be every request this is done by passportjs when user logs in || 
+  res.locals.isHome = false;  // to check if the user is on homepage || this will be overrite in home/index route.
+  res.locals.currUser = req.user; //now current user's info will be available every request 'req.user' is given by passportjs when user logs in
   next();
 });
 
 app.use("/listing", listing);
+app.use("/search", search);
 app.use("/listing/:id/review", review);
 app.use("/user", user);
 app.use("/bookings", booking);

@@ -1,11 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Booking Confirmed</title>
     <style>
-        * {
+        /* * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
@@ -20,12 +14,12 @@
             display: flex;
             align-items: center;
             justify-content: center;
-        }
+        } */
 
         .confirmation-container {
             max-width: 600px;
             width: 100%;
-            margin: 20px;
+            margin: 20px auto;
             text-align: center;
         }
 
@@ -298,8 +292,7 @@
             }
         }
     </style>
-</head>
-<body>
+
     <div class="confirmation-container">
         <!-- Success Icon and Title -->
         <div class="success-icon"></div>
@@ -366,10 +359,7 @@
 
         <!-- Action Buttons -->
         <div class="action-buttons">
-            <button class="btn btn-secondary" >View All Bookings</button>
+            <a class="btn btn-secondary" href="/bookings">View All Bookings</a>
             <a class="btn btn-primary" href="/listing">Back to Home</a>
         </div>
     </div>
-
-</body>
-</html>

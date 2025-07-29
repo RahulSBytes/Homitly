@@ -2,7 +2,7 @@ import listingModel from "../models/Listing.js";
 
 export async function index(req, res) {
   const data = await listingModel.find().populate("comments");
-
+  res.locals.isHome = true;
   // calculaating average rating
   let avgrating = 0;
   let sum = 0;
@@ -17,6 +17,8 @@ export async function index(req, res) {
   // console.log(data[0].comments[0].rating);
   res.render("listings/index", { data, avgrating });
 }
+
+
 
 export async function createListingGet(req, res) {
   // no need to use async or to wrap with asyncWrapper coz no async task is being done here.
@@ -34,6 +36,7 @@ export async function createListingPost(req, res) {
   req.flash("success", "new listing created");
   res.redirect("/listing");
 }
+
 
 export async function showListing(req, res) {
   // throw new expressError("middleware")
@@ -69,20 +72,27 @@ export async function editListing(req, res) {
 }
 
 export async function updateListing(req, res) {
-  let { id } = req.params;
-  let { path, filename } = req.file;
-  // console.log("...file...", req.file, "...body....", req.body);
-  const data = await listingModel.findByIdAndUpdate(
-    id,
-    { ...req.body },
-    { new: true }
-  );
+  try {
+    let { id } = req.params;
+    const { photos } = await listingModel.findById(id);
 
-  if (typeof req.file !== "undefined") {
-    data.photos = { path, filename };
+    const data = await listingModel.findByIdAndUpdate(
+      id,
+      { ...req.body },
+      { new: true }
+    );
+
+    if (typeof req.file === "undefined") {
+      data.photos = photos;
+    } else {
+      let { path = photos.path, filename = photos.filename } = req.file;
+      data.photos = { path, filename };
+    }
+
     await data.save();
+    req.flash("success", "listing updated");
+    res.redirect(`/listing/${id}`);
+  } catch (error) {
+    next(error);
   }
-
-  req.flash("success", "listing updated");
-  res.redirect(`/listing/${id}`);
 }

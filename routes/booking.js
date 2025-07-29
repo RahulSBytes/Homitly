@@ -4,7 +4,7 @@ import { asyncWrapper, isLoggedIn, validateBooking } from "../middlewares.js";
 const router = express.Router({ mergeParams: true });
 
 // Get all bookings
-router.get('/', asyncWrapper(getAllBookings));
+router.get('/', isLoggedIn, asyncWrapper(getAllBookings));
 // /listings/:listingId/book
 
 // router.get("/invoice", isLoggedIn, asyncWrapper(renderFinalPage));
@@ -16,7 +16,7 @@ router.post("/create", isLoggedIn, asyncWrapper(saveToDatabase));
 // router.get('/:id', getBookingById);
 
 
-router.get("/:id", asyncWrapper(renderBookingForm));
+router.get("/:id", isLoggedIn, asyncWrapper(renderBookingForm));
 
 // Create a new booking
 router.post(

@@ -2,6 +2,10 @@ import bookingModel from "../models/Booking.js";
 import listingModel from "../models/Listing.js";
 import userModel from "../models/User.js";
 import expressError from "../utility/errorClass.js";
+import { emailSender } from "../utils/email.js";
+
+// import puppeteer from 'puppeteer';
+// import nodemailer from 'nodemailer';
 
 export function renderBookingForm(req, res) {
   res.render("bookings/booking.ejs", { listingId: req.params.id });
@@ -39,6 +43,8 @@ export async function createBooking(req, res) {
 
   let invoicedata = { ...userdata, ...listingdata, ...sessionObj };
 
+  req.session.invoicedata = { ...invoicedata, tax };
+    req.flash("success", "Property booked successfully");
   res.render("bookings/middle.ejs", {
     data: invoicedata,
     tax,
@@ -46,6 +52,7 @@ export async function createBooking(req, res) {
 
   // -------------------------
 }
+
 
 export async function saveToDatabase(req, res, next) {
   try {
@@ -68,13 +75,25 @@ export async function saveToDatabase(req, res, next) {
     user.bookings.push(data._id);
     await user.save();
 
+
+    // ------------------------
+
+
+    try {
+      await emailSender(req.session.invoicedata,req.user);
+      console.log("Confirmation email sent for booking");
+    } catch (err) {
+    return next(new Error("Failed to send email: " + err.message));
+    }
+
+    //------------------------------------
+
     delete req.session.bookingData;
 
-    req.flash("success", "property booked");
     res.render("bookings/final.ejs", { data, time });
   } catch (error) {
     return next(
-      new expressError(500, `something broke server-side :: ${error}`)
+      new expressError(500, `something broke server-side`)
     );
   }
 }
@@ -105,8 +124,6 @@ export async function getAllBookings(req, res, next) {
         statusClass: `status-${status}`,
       };
     });
-
-    // console.log(bookingsWithStatus[0].listingid.photos);
 
     res.render("bookings/bookedlist.ejs", { bookings: bookingsWithStatus });
   } catch (error) {

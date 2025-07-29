@@ -19,6 +19,9 @@
             line-height: 1.6;
         }
 
+
+
+
         .container {
             max-width: 800px;
             margin: 0px auto;
@@ -300,6 +303,27 @@
                 flex-direction: column;
             }
         }
+
+        @media print {
+
+            .header>* {
+                display: none;
+            }
+
+            .btn-primary {
+                display: none;
+            }
+
+
+            body {
+                margin-inline: 5rem;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+                background: #f9f9f9;
+                /* Keep same background when printing */
+            }
+
+        }
     </style>
 </head>
 
@@ -312,10 +336,12 @@
 
         <div class="confirmation-card">
             <div class="booking-header">
-                <div class="property-name"><%= data._doc.title %></div>
+                <div class="property-name">
+                    <%= data._doc.title %>
+                </div>
             </div>
 
-<!-- res.redirect(`/success?message=Booking%20complete`); -->
+            <!-- res.redirect(`/success?message=Booking%20complete`); -->
 
             <div class="booking-details">
                 <!-- Stay Information -->
@@ -416,7 +442,9 @@
                     <div class="section-title">Amenities</div>
                     <div class="amenities-list">
                         <% for(let item of data._doc.amenities){ %>
-                            <span><%= item %></span>
+                            <span>
+                                <%= item %>
+                            </span>
                             <% } %>
                     </div>
                 </div>
@@ -426,12 +454,17 @@
                     <div class="section-title">Pricing Summary</div>
                     <div class="pricing-summary">
                         <div class="price-row">
-                            <span class="price-label">₹<%= data._doc.pricePerNight %> × <%= data.numberofdays %> nights</span>
-                            <span class="price-value"><%=  data._doc.pricePerNight * data.numberofdays %></span>
+                            <span class="price-label">₹<%= data._doc.pricePerNight %> × <%= data.numberofdays %>
+                                        nights</span>
+                            <span class="price-value">
+                                <%= data._doc.pricePerNight * data.numberofdays %>
+                            </span>
                         </div>
                         <div class="price-row">
                             <span class="price-label">Cleaning Fee</span>
-                            <span class="price-value"><%= data._doc.cleaningFee %></span>
+                            <span class="price-value">
+                                <%= data._doc.cleaningFee %>
+                            </span>
                         </div>
                         <div class="price-row">
                             <span class="price-label">Service Fee</span>
@@ -439,11 +472,11 @@
                         </div>
                         <div class="price-row">
                             <span class="price-label">Taxes</span>
-                            <span class="price-value">₹<%= tax %></span>
+                            <span class="price-value">₹<%= data.tax %></span>
                         </div>
                         <div class="price-row total">
                             <span class="price-label">Payable Amount</span>
-                            <span class="price-value">₹<%= data.payableAmount + tax %></span>
+                            <span class="price-value">₹<%= data.payableAmount + data.tax %></span>
                         </div>
                     </div>
                 </div>
@@ -454,11 +487,15 @@
                     <div class="contact-info">
                         <div class="detail-item">
                             <span class="detail-label">Host Name</span>
-                            <span class="detail-value"><%= data._doc.host.username %></span>
+                            <span class="detail-value">
+                                <%= data._doc.host.username %>
+                            </span>
                         </div>
                         <div class="detail-item">
                             <span class="detail-label">Email</span>
-                            <span class="detail-value"><%= data._doc.host.email %></span>
+                            <span class="detail-value">
+                                <%= data._doc.host.email %>
+                            </span>
                         </div>
                         <div class="detail-item">
                             <span class="detail-label">Phone Number</span>
@@ -473,7 +510,7 @@
                     <form action="/bookings/create" method="post">
                         <button class="btn btn-primary" type="submit">Confirm booking</button>
                     </form>
-                    
+
                 </div>
             </div>
         </div>
