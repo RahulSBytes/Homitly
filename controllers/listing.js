@@ -1,6 +1,8 @@
 import listingModel from "../models/Listing.js";
 
 export async function index(req, res) {
+  // console.log(res.locals.currUser ? res.locals.currUser : "its null");
+
   const data = await listingModel.find().populate("comments");
   res.locals.isHome = true;
   // calculaating average rating
@@ -18,8 +20,6 @@ export async function index(req, res) {
   res.render("listings/index", { data, avgrating });
 }
 
-
-
 export async function createListingGet(req, res) {
   // no need to use async or to wrap with asyncWrapper coz no async task is being done here.
   res.render("listings/new");
@@ -36,7 +36,6 @@ export async function createListingPost(req, res) {
   req.flash("success", "new listing created");
   res.redirect("/listing");
 }
-
 
 export async function showListing(req, res) {
   // throw new expressError("middleware")

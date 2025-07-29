@@ -1,17 +1,344 @@
+<style>
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    border-bottom: 1px solid #DDDDDD;
+    box-shadow: 0 1px 12px rgba(0,0,0,0.08);
+    position: sticky;
+    top: 0;
+    background-color: white;
+    z-index: 1000;
+}
+
+.nav-container {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.logo {
+    font-family: "Circular", -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif;
+    text-decoration: none;
+    font-size: 1.4rem;
+    color: #FF385C;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+}
+
+.logo .o {
+    color: #FF385C;
+    margin-left: 1px;
+}
+
+.navs {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.navs > a {
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #222222;
+    padding: 0.5rem 0.75rem;
+    border-radius: 22px;
+    transition: background-color 0.3s ease;
+}
+
+.navs > a:hover {
+    background-color: #F7F7F7;
+    color: #FF385C;
+}
+
+.avatar {
+    height: 36px;
+    width: 36px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1px solid #DDDDDD;
+    transition: transform 0.2s ease;
+}
+
+.avatar:hover {
+    transform: scale(1.1);
+}
+
+.hamburgur {
+    display: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 50%;
+    background-color: #F7F7F7;
+    transition: background-color 0.3s ease;
+}
+
+.hamburgur:hover {
+    background-color: #EBEBEB;
+}
+
+.hamburgur i {
+    color: #222222;
+}
+
+.search {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: white;
+    border: 1px solid #DDDDDD;
+    border-radius: 40px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.08);
+    padding: 0.3rem 1rem;
+    transition: box-shadow 0.3s ease, border-color 0.3s ease;
+    height: 42px;
+}
+
+.search:hover {
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    border-color: #B0B0B0;
+}
+
+.search > [type="text"] {
+    border: none;
+    outline: none;
+    flex-grow: 1;
+    font-size: 0.9rem;
+    width: 250px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0;
+}
+
+.search-btn {
+    background-color: #FF385C;
+    color: white;
+    border: none;
+    border-radius: 22px;
+    padding: 0.3rem 1rem;
+    font-size: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    height: 34px;
+    transition: background-color 0.3s ease;
+}
+
+.search-btn:hover {
+    background-color: #E31C5F;
+}
+
+.search-icon-mobile {
+    display: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 50%;
+    background-color: #F7F7F7;
+    transition: background-color 0.3s ease;
+    margin-right: 0.5rem;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.search-icon-mobile:hover {
+    background-color: #EBEBEB;
+}
+
+.mobile-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 2rem;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    padding: 1rem;
+    z-index: 1100;
+    min-width: 250px;
+    animation: slideDown 0.3s ease;
+    margin-top: 8px;
+}
+
+.mobile-menu.show {
+    display: flex;
+    flex-direction: column;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.mobile-menu a {
+    display: block;
+    padding: 0.75rem 1rem;
+    text-decoration: none;
+    color: #222222;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.mobile-menu a:hover {
+    background-color: #F7F7F7;
+    color: #FF385C;
+}
+
+.mobile-search-view {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: white;
+    height: 100%;
+    padding: 1rem;
+    z-index: 1200;
+    animation: fadeIn 0.3s ease;
+    align-items: center;
+}
+
+.search-back-btn {
+    margin-right: 10px;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 50%;
+    background-color: #F7F7F7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+}
+
+.search-back-btn:hover {
+    background-color: #EBEBEB;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.mobile-search-view.show {
+    display: flex;
+}
+
+/* Minimal search bar for smaller screens */
+.mobile-search {
+    display: flex;
+    align-items: center;
+    background-color: #F7F7F7;
+    border-radius: 40px;
+    padding: 0.3rem 0.6rem;
+    flex: 1;
+    height: 38px;
+}
+
+.mobile-search > [type="text"] {
+    border: none;
+    outline: none;
+    background-color: transparent;
+    flex-grow: 1;
+    font-size: 0.9rem;
+    padding: 0 0.5rem;
+}
+
+.mobile-search-btn {
+    background-color: #FF385C;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Responsive Design */
+@media (max-width: 1100px) {
+    .navs > a:not(.hamburgur):not(.avatar) {
+        display: none;
+    }
+
+    .hamburgur {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .mobile-menu {
+        right: 1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    nav {
+        padding: 0.8rem 1rem;
+    }
+    
+    .search {
+        display: none;
+    }
+    
+    .search-icon-mobile {
+        display: flex;
+    }
+}
+
+@media (min-width: 1101px) {
+    .hamburgur {
+        display: none;
+    }
+
+    .mobile-menu {
+        display: none !important;
+    }
+
+    .navs > a {
+        display: inline-block;
+    }
+    
+    .search-icon-mobile {
+        display: none;
+    }
+}
+</style>
+
 <nav>
     <a href="/listing" class="logo">H<span class="o">o</span>mitly</a>
     <% if(isHome===true){ %>
 
         <form method="get" action="/search" class="search">
-            <input type="text" name="q" id="" required>
+            <input type="text" name="q" id="">
             <button class="search-btn" type="submit">
                 <i class="fa-solid fa-magnifying-glass fa-sm search-icon"></i>Search</button>
         </form>
         <% } %>
 
 
+
             <div class="navs">
+
+                <div class="hamburgur">
+                    <i class="fa-solid fa-bars fa-lg" style="color: #232323;"></i>
+                </div>
+
                 <% if(currUser){ %>
+                    <img src="<%= currUser.avatar %>" class="avatar">
                     <a href="/bookings"><b>Booking</b> </a>
                     <a href="/listing/new"><b>List your home</b> </a>
                     <a href="/user/logout">Logout</a>
@@ -24,3 +351,104 @@
 
             </div>
 </nav>
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const hamburger = document.querySelector('.hamburgur');
+    const nav = document.querySelector('nav');
+    const logo = document.querySelector('.logo');
+    const navs = document.querySelector('.navs');
+    const searchOriginal = document.querySelector('.search');
+    
+    // Create search icon for mobile
+    const searchIconMobile = document.createElement('div');
+    searchIconMobile.className = 'search-icon-mobile';
+    searchIconMobile.innerHTML = '<i class="fa-solid fa-magnifying-glass fa-lg" style="color: #232323;"></i>';
+    navs.prepend(searchIconMobile);
+    
+    // Create mobile menu container
+    const mobileMenu = document.createElement('div');
+    mobileMenu.className = 'mobile-menu';
+    
+    // Get all links from navs (exclude hamburger and avatar)
+    const links = document.querySelectorAll('.navs > a');
+    
+    // Clone links to mobile menu
+    links.forEach(link => {
+        if (!link.classList.contains('hamburgur') && !link.querySelector('.avatar')) {
+            const clonedLink = link.cloneNode(true);
+            mobileMenu.appendChild(clonedLink);
+        }
+    });
+    
+    // Append mobile menu to nav
+    nav.appendChild(mobileMenu);
+    
+    // Create mobile search view container
+    const mobileSearchView = document.createElement('div');
+    mobileSearchView.className = 'mobile-search-view';
+    
+    // Create back button
+    const backButton = document.createElement('div');
+    backButton.className = 'search-back-btn';
+    backButton.innerHTML = '<i class="fa-solid fa-arrow-left fa-lg" style="color: #232323;"></i>';
+    
+    // Create minimal search for mobile
+    const mobileSearch = document.createElement('form');
+    mobileSearch.className = 'mobile-search';
+    mobileSearch.method = 'get';
+    mobileSearch.action = '/search';
+    
+    const mobileSearchInput = document.createElement('input');
+    mobileSearchInput.type = 'text';
+    mobileSearchInput.name = 'q';
+    
+    const mobileSearchBtn = document.createElement('button');
+    mobileSearchBtn.className = 'mobile-search-btn';
+    mobileSearchBtn.type = 'submit';
+    mobileSearchBtn.innerHTML = '<i class="fa-solid fa-magnifying-glass fa-xs" style="color: white;"></i>';
+    
+    mobileSearch.appendChild(mobileSearchInput);
+    mobileSearch.appendChild(mobileSearchBtn);
+    
+    // Assemble mobile search view
+    mobileSearchView.appendChild(backButton);
+    mobileSearchView.appendChild(mobileSearch);
+    
+    // Append mobile search view to nav
+    nav.appendChild(mobileSearchView);
+    
+    // Toggle mobile search view on search icon click
+    searchIconMobile.addEventListener('click', function(event) {
+        mobileSearchView.classList.add('show');
+        event.stopPropagation();
+        
+        // Focus on search input
+        mobileSearchInput.focus();
+    });
+    
+    // Back button click handler
+    backButton.addEventListener('click', function(event) {
+        mobileSearchView.classList.remove('show');
+        event.stopPropagation();
+    });
+    
+    // Toggle mobile menu on hamburger click
+    hamburger.addEventListener('click', function(event) {
+        mobileMenu.classList.toggle('show');
+        event.stopPropagation();
+    });
+    
+    // Close mobile menu and search when clicking outside
+    document.addEventListener('click', function(event) {
+        if (!hamburger.contains(event.target) && !mobileMenu.contains(event.target)) {
+            mobileMenu.classList.remove('show');
+        }
+        
+        if (!searchIconMobile.contains(event.target) && !mobileSearchView.contains(event.target)) {
+            mobileSearchView.classList.remove('show');
+        }
+    });
+});
+</script>

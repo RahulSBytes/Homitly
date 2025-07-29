@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Airbnb-Style Hamburger Menu (CSS Only)</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+
+        /* Header */
+        .header {
+            background: white;
+            border-bottom: 1px solid #dddddd;
+            padding: 16px 24px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        /* .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        } */
+
+        /* .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: #ff385c;
+            text-decoration: none;
+        } */
+
+        /* User Menu Section */
+        .user-section {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .host-link {
+            color: #222222;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 14px;
+            padding: 8px 12px;
+            border-radius: 22px;
+            transition: all 0.2s ease;
+        }
+
+        .host-link:hover {
+            background-color: #f7f7f7;
+        }
+
+        .language-btn {
+            background: none;
+            border: none;
+            padding: 8px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            color: #717171;
+        }
+
+        .language-btn:hover {
+            background-color: #f7f7f7;
+        }
+
+        /* Hamburger Menu Container */
+        .menu-container {
+            position: relative;
+        }
+
+        /* Hidden Checkbox for Toggle */
+        .menu-toggle {
+            display: none;
+        }
+
+        /* Menu Button */
+        .menu-button {
+            display: flex;
+            align-items: center;
+            background: white;
+            border: 1px solid #dddddd;
+            border-radius: 21px;
+            padding: 5px 5px 5px 12px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            gap: 8px;
+            position: relative;
+        }
+
+        .menu-button:hover {
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.18);
+        }
+
+        .hamburger-icon {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+        }
+
+        .hamburger-line {
+            width: 16px;
+            height: 2px;
+            background-color: #717171;
+            transition: all 0.3s ease;
+        }
+
+        .user-avatar {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-color: #717171;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        /* Dropdown Menu */
+        .dropdown-menu {
+            position: absolute;
+            top: calc(100% + 8px);
+            right: 0;
+            background: white;
+            border: 1px solid #dddddd;
+            border-radius: 12px;
+            box-shadow: 0 2px 16px rgba(0, 0, 0, 0.12);
+            min-width: 240px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.2s ease;
+            z-index: 1001;
+        }
+
+        /* Show dropdown when checkbox is checked */
+        .menu-toggle:checked + .menu-button + .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        /* Animate hamburger icon when checked */
+        .menu-toggle:checked + .menu-button .hamburger-line:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .menu-toggle:checked + .menu-button .hamburger-line:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-toggle:checked + .menu-button .hamburger-line:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -6px);
+        }
+
+        .dropdown-section {
+            padding: 8px 0;
+        }
+
+        .dropdown-section:not(:last-child) {
+            border-bottom: 1px solid #ebebeb;
+        }
+
+        .dropdown-item {
+            display: flex;
+            align-items: center;
+            padding: 12px 16px;
+            color: #222222;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 400;
+            transition: background-color 0.2s ease;
+            gap: 12px;
+        }
+
+        .dropdown-item:hover {
+            background-color: #f7f7f7;
+        }
+
+        .dropdown-item.highlighted {
+            font-weight: 600;
+        }
+
+        .dropdown-item i {
+            width: 16px;
+            color: #717171;
+            font-size: 14px;
+        }
+
+        /* Close dropdown when clicking outside (using sibling elements) */
+        .menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.3);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.2s ease;
+            z-index: 999;
+            pointer-events: none;
+        }
+
+        .menu-toggle:checked ~ .menu-overlay {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .host-link {
+                display: none;
+            }
+
+            .header-content {
+                padding: 0 16px;
+            }
+
+            .dropdown-menu {
+                right: 0;
+                left: auto;
+                min-width: 280px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .dropdown-menu {
+                right: -16px;
+                min-width: calc(100vw - 32px);
+                max-width: 320px;
+            }
+        }
+
+       
+        /* To show authenticated items, add class "authenticated" to body */
+        body.authenticated .guest-items {
+            display: none;
+        }
+
+        body.authenticated .auth-items {
+            display: block;
+        }
+
+        body.authenticated .user-avatar {
+            background-color: #ff385c;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <!-- User Section -->
+            <div class="user-section">
+                <!-- <a href="/host" class="host-link">Become a Host</a> -->
+
+                <!-- Hamburger Menu Container -->
+                <div class="menu-container">
+                    <!-- Hidden checkbox for toggle functionality -->
+                    <input type="checkbox" class="menu-toggle" id="menuToggle">
+                    
+                    <!-- Menu Button (acts as label for checkbox) -->
+                    <label for="menuToggle" class="menu-button">
+                        <div class="hamburger-icon">
+                            <div class="hamburger-line"></div>
+                            <div class="hamburger-line"></div>
+                            <div class="hamburger-line"></div>
+                        </div>
+                        <div class="user-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                    </label>
+
+                    <!-- Dropdown Menu -->
+                    <div class="dropdown-menu">
+                        <!-- Guest Items (default) -->
+                        <div class="dropdown-section guest-items">
+                            <a href="/login" class="dropdown-item highlighted">
+                                <i class="fas fa-sign-in-alt"></i>
+                                Log in
+                            </a>
+                            <a href="/signup" class="dropdown-item">
+                                <i class="fas fa-user-plus"></i>
+                                Sign up
+                            </a>
+                        </div>
+
+                        <!-- Authenticated Items (hidden by default) -->
+                        <div class="dropdown-section auth-items">
+                            <a href="/profile" class="dropdown-item">
+                                <i class="fas fa-user"></i>
+                                Profile
+                            </a>
+                            <a href="/bookings" class="dropdown-item">
+                                <i class="fas fa-calendar-check"></i>
+                                Your bookings
+                            </a>
+                            <a href="/wishlist" class="dropdown-item">
+                                <i class="fas fa-heart"></i>
+                                Wishlists
+                            </a>
+                        </div>
+
+                        <div class="dropdown-section">
+                            <a href="/host" class="dropdown-item">
+                                <i class="fas fa-home"></i>
+                                Become a Host
+                            </a>
+                            <a href="/host/properties" class="dropdown-item auth-items">
+                                <i class="fas fa-building"></i>
+                                Manage listings
+                            </a>
+                            <a href="/host/experience" class="dropdown-item">
+                                <i class="fas fa-star"></i>
+                                Host an experience
+                            </a>
+                        </div>
+
+                        <div class="dropdown-section">
+                            <a href="/help" class="dropdown-item">
+                                <i class="fas fa-question-circle"></i>
+                                Help Center
+                            </a>
+                            <a href="/feedback" class="dropdown-item">
+                                <i class="fas fa-comment"></i>
+                                Give feedback
+                            </a>
+                        </div>
+
+                        <div class="dropdown-section auth-items">
+                            <a href="/logout" class="dropdown-item">
+                                <i class="fas fa-sign-out-alt"></i>
+                                Log out
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Overlay for closing menu (label for checkbox) -->
+                    <label for="menuToggle" class="menu-overlay"></label>
+                </div>
+            </div>
+        </div>
+    </header>
+
+   
+    </main>
+</body>
+</html>
