@@ -209,19 +209,19 @@
         border-color: #e31c5f;
     }
 
-     @media (min-width: 900px) {
+    @media (min-width: 900px) {
         /* main{
     padding-inline: 10vw;
 } */
 
-     }
+    }
 
-     @media (max-width: 770px) {
-        main{
-    padding: 0;
-}
+    @media (max-width: 770px) {
+        main {
+            padding: 0;
+        }
 
-     }
+    }
 
 
     @media (max-width: 670px) {
@@ -232,32 +232,30 @@
         /* .bookinglist{
 
             /* margin-inline: 5vw; */
-        /* } */ */
+        /* } */
+        */ .card-content {
+            display: flex;
+            flex-direction: column;
+        }
 
+        .pack {
+            width: 100%;
+        }
 
-         .card-content {
-        display: flex;
-        flex-direction: column;
-    }
+        .booking-info {
+            margin-top: 0.8rem;
+        }
 
-    .pack{
-        width: 100%;
-    }
+        .card-image {
+            width: 100%;
+            /* height: 40%; */
+            /* object-fit: cover; */
+        }
 
-.booking-info{
-    margin-top: 0.8rem;
-}
-
-    .card-image{
-        width: 100%;
-        /* height: 40%; */
-        /* object-fit: cover; */
-    }
-
-    .booking-dates{
-        display: flex;
-        justify-content: space-around;
-    }
+        .booking-dates {
+            display: flex;
+            justify-content: space-around;
+        }
 
         .booking-dates {
             grid-template-columns: 1fr;
@@ -267,6 +265,22 @@
             grid-template-columns: 1fr 1fr;
         }
     }
+
+
+
+    div.no-item{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    /* border: 2px solid green; */
+  }
+
+  p.no-item{
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #484848;
+  }
 </style>
 
 <section class="bookinglist">
@@ -275,68 +289,73 @@
         <h1 class=".page-title">Your Bookings</h1>
 
 
+        <% if(bookings.length===0){ %>
+            <div class="no-item">
+                <p class="no-item">no item</p>
+            </div>
+            <% }else{ %>
+                <% for(let item of bookings){ %>
 
-        <!-- Sample Booking Card -->
+                    <div class="booking-card">
+                        <div class="card-content">
+                            <img class="card-image" src="<%= item.listingid.photos.path%>"
+                                alt="<%= item.listingid.photos.filename %>">
 
-        <% for(let item of bookings){ %>
+                            <div class="pack">
+                                <div class="booking-header">
+                                    <div class="booking-info">
+                                        <h3 class="property-title">
+                                            <%= item.listingid.title %>
+                                        </h3>
+                                        <span class="booking-status <%= item.statusClass %>">
+                                            <%= item.status %>
+                                        </span>
+                                    </div>
+                                    <p class="property-type">
+                                        <%= item.listingid.propertyType %> &nbsp; • &nbsp; <%= item.listingid.roomType
+                                                %>
+                                    </p>
+                                </div>
 
-            <div class="booking-card">
-                <div class="card-content">
-                    <img class="card-image" src="<%= item.listingid.photos.path%>"
-                        alt="<%= item.listingid.photos.filename %>">
+                                <div class="booking-dates">
+                                    <div class="date-section">
+                                        <div class="date-label">Check-in</div>
+                                        <div class="date-value">
+                                            <%= item.checkin %>
+                                        </div>
+                                    </div>
+                                    <div class="date-section">
+                                        <div class="date-label">Check-out</div>
+                                        <div class="date-value">
+                                            <%= item.checkout %>
+                                        </div>
+                                    </div>
+                                </div>
 
-                    <div class="pack">
-                        <div class="booking-header">
-                            <div class="booking-info">
-                                <h3 class="property-title">
-                                    <%= item.listingid.title %>
-                                </h3>
-                                <span class="booking-status <%= item.statusClass %>">
-                                    <%= item.status %>
-                                </span>
-                            </div>
-                            <p class="property-type">
-                                <%= item.listingid.propertyType %> &nbsp; • &nbsp; <%= item.listingid.roomType %>
-                            </p>
-                        </div>
 
-                        <div class="booking-dates">
-                            <div class="date-section">
-                                <div class="date-label">Check-in</div>
-                                <div class="date-value">
-                                    <%= item.checkin %>
+
+                                <div class="booking-footer">
+                                    <div>
+                                        <div>Booking ID: #<%= item._id %>
+                                        </div>
+                                        <div>Booked on: <%= item.bookedOn %>
+                                        </div>
+                                        <div class="total-price">₹<%= item.payableAmount%> total</div>
+                                    </div>
+                                </div>
+
+                                <div class="action-buttons" style="margin-top: 16px; justify-content: flex-end;">
+                                    <a class="btn btn-primary" href="/listing/<%= item.listingid._id %>"
+                                        class="btn">View
+                                        Details</a>
                                 </div>
                             </div>
-                            <div class="date-section">
-                                <div class="date-label">Check-out</div>
-                                <div class="date-value">
-                                    <%= item.checkout %>
-                                </div>
-                            </div>
-                        </div>
-
-
-
-                        <div class="booking-footer">
-                            <div>
-                                <div>Booking ID: #<%= item._id %>
-                                </div>
-                                <div>Booked on: <%= item.bookedOn %>
-                                </div>
-                                <div class="total-price">₹<%= item.payableAmount%> total</div>
-                            </div>
-                        </div>
-
-                        <div class="action-buttons" style="margin-top: 16px; justify-content: flex-end;">
-                            <a class="btn btn-primary" href="/listing/<%= item.listingid._id %>" class="btn">View
-                                Details</a>
-                            <!-- <a href="#" class="btn">Contact Host</a>
-                     <a href="#" >Manage Booking</a> -->
                         </div>
                     </div>
-                </div>
-            </div>
-            <% } %>
+                    <% } %>
+
+                        <%} %>
+
 
 
     </div>

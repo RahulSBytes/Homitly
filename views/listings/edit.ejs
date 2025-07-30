@@ -1,38 +1,298 @@
-<form class="new-listing" action="/listing/<%= data._id %>?_method=PATCH" method="post" enctype="multipart/form-data">
-    <label>Title</label>
-    <input type="text" name="title" value="<%= data.title %>" required />
+<style>
+  /* Form container */
+  .listing-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+  }
+  
+  /* Form styling */
+  .new-listing {
+    width: 100%;
+    max-width: 600px;
+    padding: 32px;
+    border-radius: 12px;
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.08);
+    background-color: white;
+    margin-bottom: 40px;
+  }
+  
+  /* Form title */
+  .form-title {
+    font-size: 24px;
+    font-weight: 600;
+    color: #222222;
+    margin: 0 0 28px 0;
+    text-align: center;
+  }
+  
+  /* Section divider */
+  .form-section {
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #EEEEEE;
+  }
+  
+  .section-title {
+    font-size: 18px;
+    font-weight: 500;
+    color: #222222;
+    margin-bottom: 16px;
+  }
+  
+  /* Form grid for side-by-side fields */
+  .form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  
+  /* Labels */
+  .new-listing label {
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    color: #484848;
+    margin-bottom: 8px;
+    margin-top: 1rem;
+    text-transform: capitalize;
+  }
+  
+  /* Standard input fields */
+  .new-listing input:not([type="file"]),
+  .new-listing select {
+    width: 100%;
+    padding: 10px 16px;
+    font-size: 15px;
+    border: 1px solid #DDDDDD;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
+    height: 40px;
+    background-color: white;
+  }
+  
+  .new-listing input:not([type="file"]):focus,
+  .new-listing select:focus,
+  .new-listing textarea:focus {
+    border-color: #FF385C;
+    box-shadow: 0 0 0 2px rgba(255, 56, 92, 0.2);
+    outline: none;
+  }
+  
+  /* Textarea styling */
+  .new-listing textarea {
+    width: 100%;
+    padding: 10px 16px;
+    font-size: 15px;
+    border: 1px solid #DDDDDD;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
+    min-height: 100px;
+    resize: none;
+    font-family: inherit;
+  }
+  
+  /* File input styling */
+  .file-input-container {
+    position: relative;
+    width: 100%;
+    margin-bottom: 28px;
+  }
+  
+  .file-input-button {
+    display: block;
+    width: 100%;
+    padding: 10px 16px;
+    background-color: #F7F7F7;
+    border: 1px dashed #DDDDDD;
+    border-radius: 8px;
+    text-align: center;
+    color: #484848;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    height: 40px;
+    line-height: 20px;
+  }
+  
+  .file-input-button:hover {
+    background-color: #EBEBEB;
+    border-color: #BBBBBB;
+  }
+  
+  .new-listing input[type="file"] {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+  }
+  
+  .file-name {
+    margin-top: 8px;
+    font-size: 12px;
+    color: #717171;
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  
+  /* Submit button */
+  .new-listing button {
+    width: 100%;
+    padding: 12px 16px;
+    background-color: #FF385C;
+    color: white;
+    font-size: 16px;
+    font-weight: 500;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    height: 44px;
+  }
+  
+  .new-listing button:hover {
+    background-color: #E31C5F;
+    transform: translateY(-2px);
+  }
+  
+  .new-listing button:active {
+    transform: translateY(0);
+  }
 
-    <label>Description</label>
-    <textarea name="description" rows="7" required><%= data.description %></textarea>
+  /* Current image preview */
+  .current-image {
+    margin-bottom: 16px;
+    display: flex; 
+    flex-direction: column;
+  }
 
-    <label>Max Guests</label>
-    <input type="number" name="maxGuests" min="1" value="<%= data.maxGuests %>" required />
+  .current-image img {
+    border-radius: 8px;
+    object-fit: cover;
+    width: 120px;
+    height: 90px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    margin-bottom: 8px;
+  }
 
-    <label>Bedrooms</label>
-    <input type="number" name="bedrooms" min="0" value="<%= data.bedrooms %>" required />
+  .image-label {
+    font-size: 12px;
+    color: #717171;
+    margin-bottom: 16px;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 640px) {
+    .new-listing {
+      padding: 24px 16px;
+    }
+    
+    .form-grid {
+      grid-template-columns: 1fr;
+      gap: 0;
+    }
+    
+    .form-title {
+      font-size: 20px;
+      margin-bottom: 20px;
+    }
 
-    <label>Beds</label>
-    <input type="number" name="beds" min="0" value="<%= data.beds %>" required />
+  }
+</style>
 
-    <label>Amenities (comma separated)</label>
-    <input type="text" name="amenities" value="<%= data.amenities.join(', ') %>" />
+<div class="listing-container">
+  <form class="new-listing" action="/listing/<%= data._id %>?_method=PATCH" method="post" enctype="multipart/form-data">
+    <h2 class="form-title">Update Your Listing</h2>
+    
+    <div class="form-section">
+      <div class="section-title">Basic Information</div>
+      <label for="title">Title</label>
+      <input type="text" id="title" name="title" value="<%= data.title %>" required />
 
-    <label>Address</label>
-    <input type="text" name="address" placeholder="enter address" value="<%= data.address %>" />
-
-    <label>Price Per Night ($)</label>
-    <input type="number" name="pricePerNight" min="0" value="<%= data.pricePerNight %>" required />
-
-    <label>Cleaning Fee ($)</label>
-    <input type="number" name="cleaningFee" min="0" value="<%= data.cleaningFee %>" />
-
-    <img src="<%= data.photos.path %>" width="100" alt="home-snapshot">
-
-    <label>upload image</label>
-    <input type="file" name="photos" />
+      <label for="description">Description</label>
+      <textarea id="description" name="description" rows="7" required><%= data.description %></textarea>
+    </div>
+    
+    <div class="form-section">
+      <div class="section-title">Property Details</div>
+      <div class="form-grid">
+        <div>
+          <label for="maxGuests">Max Guests</label>
+          <input type="number" id="maxGuests" name="maxGuests" min="1" value="<%= data.maxGuests %>" required />
+        </div>
+        
+        <div>
+          <label for="bedrooms">Bedrooms</label>
+          <input type="number" id="bedrooms" name="bedrooms" min="0" value="<%= data.bedrooms %>" required />
+        </div>
+      </div>
+      
+      <div class="form-grid">
+        <div>
+          <label for="beds">Beds</label>
+          <input type="number" id="beds" name="beds" min="0" value="<%= data.beds %>" required />
+        </div>
+        
+        <div>
+          <label for="amenities">Amenities</label>
+          <input type="text" id="amenities" name="amenities" value="<%= data.amenities.join(', ') %>" />
+        </div>
+      </div>
+    </div>
+    
+    <div class="form-section">
+      <div class="section-title">Location</div>
+      <label for="address">Address</label>
+      <input type="text" id="address" name="address" placeholder="Enter full address" value="<%= data.address %>" />
+    </div>
+    
+    <div class="form-section">
+      <div class="section-title Pricing">Pricing</div>
+      <div class="form-grid">
+        <div>
+          <label for="pricePerNight">Price Per Night (₹)</label>
+          <input type="number" id="pricePerNight" name="pricePerNight" min="0" value="<%= data.pricePerNight %>" required />
+        </div>
+        
+        <div>
+          <label for="cleaningFee">Cleaning Fee (₹)</label>
+          <input type="number" id="cleaningFee" name="cleaningFee" min="0" value="<%= data.cleaningFee %>" />
+        </div>
+      </div>
+    </div>
+    
+    <div class="form-section">
+      <div class="section-title">Property Photos</div>
+      
+      <div class="current-image">
+        <img src="<%= data.photos.path %>" alt="Current property image">
+        <span class="image-label">Current image</span>
+      </div>
+      
+      <label for="photos">Upload New Image</label>
+      <div class="file-input-container">
+        <div class="file-input-button">Choose a new photo</div>
+        <input type="file" id="photos" name="photos" accept="image/*" />
+        <div class="file-name"></div>
+      </div>
+    </div>
 
     <button type="submit">Update Listing</button>
-</form>
+  </form>
+</div>
 
-
-
+<script>
+  // Display file name when file is selected
+  document.getElementById('photos').addEventListener('change', function() {
+    const fileName = this.files[0] ? this.files[0].name : 'No file selected';
+    document.querySelector('.file-name').textContent = fileName;
+  });
+</script>

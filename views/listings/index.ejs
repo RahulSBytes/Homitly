@@ -1,56 +1,151 @@
 <style>
-    .box {
-  /* border: 2px solid red; */
-  height: 14rem;
-  flex: 1 1 12rem;
-  text-decoration: none;
-  box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 2px 0px;
-  max-width: 14rem;
-  min-width: 7rem;
-}
+  section {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: flex-start;
+    padding: 1rem 0;
+  }
 
-section {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  gap: 1.3rem 1rem;
-  justify-content: flex-start;
-}
+  .box {
+    position: relative;
+    text-decoration: none;
+    flex: 1 1 220px;
+    max-width: 270px;
+    min-width: 200px;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 2px 0px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 12px;
+    overflow: hidden;
+  }
 
-.listing-img {
-  width: 100%;
-  height: 75%;
-  object-fit: cover;
-  border-radius: 19px;
-}
+  .box:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+  }
 
-.text {
-  color: #222;
-  font-weight: 400;
-  padding-inline: 8px;
-  font-weight:600;
-}
+  .listing-img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 12px;
+    transition: transform 0.5s ease;
+  }
 
-.price-text {
-  color: #5e5e5e;
-  font-weight: 600;
-  padding-top: 3px;
-  font-size: 0.8rem;
-}
+  .box:hover .listing-img {
+    transform: scale(1.01);
+  }
 
+
+  .text {
+    padding: 10px 8px;
+    color: #222;
+  }
+
+  .text p:first-child {
+    font-weight: 500;
+    font-size: 15px;
+    margin: 0 0 5px 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .price-text {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #717171;
+    font-weight: 400;
+    font-size: 14px;
+    margin: 0;
+  }
+
+  .wishlist-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: rgba(255, 255, 255, 0.8);
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease;
+  }
+
+  .wishlist-btn:hover {
+    transform: scale(1.03);
+  }
+
+  .card-container {
+    position: relative;
+    flex: 1 1 220px;
+    max-width: 270px;
+    min-width: 200px;
+  }
+
+
+  div.no-item{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+  }
+
+  p.no-item{
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #484848;
+  }
 
 </style>
 
 <section>
-    <% for(let item of data){ %>
-        <a class="box" href="listing/<%=item._id %>">
+
+  <% if(data.length===0){ %>
+    <div class="no-item">
+      <p class="no-item">no item</p>
+    </div>
+    <% }else{ %>
+
+      <% for(let item of data){ %>
+        <div class="card-container">
+          <!-- Main card link -->
+          <a class="box" href="listing/<%=item._id %>">
             <img class="listing-img" src="<%= item.photos.path %>" alt="item.photos.filename">
             <div class="text">
-                <p>
-                    <%= item.title %>
-                </p>
-                <p class="price-text">&#8377;<%= item.pricePerNight %> per night&nbsp; &bull; &nbsp; &#9733; <%= avgrating%></p>
+              <p>
+                <b>
+                  <%= item.title %>
+                </b>
+              </p>
+              <p class="price-text">
+                <span>&#8377;<%= item.pricePerNight %> per night</span>
+                <span>&#9733; <%= avgrating%></span>
+              </p>
             </div>
-        </a>
+          </a>
+
+          <% if(currUser){ %>
+
+            <form action="/user/wishlist/<%=item._id %>" method="POST" style="margin:0; padding:0;">
+              <button type="submit" class="wishlist-btn" style="border: none; outline: none;">
+                <% if(currUser.wishlist.includes(item._id)){ %>
+                  <i class="fa-solid fa-heart" style="color: #FF385C;"></i>
+                  <% } else { %>
+                    <i class="fa-regular fa-heart" style="color: #484848;"></i>
+                    <% } %>
+              </button>
+            </form>
+
+            <% } %>
+
+        </div>
         <% } %>
+          <% } %>
 </section>

@@ -44,7 +44,7 @@ export async function createBooking(req, res) {
   let invoicedata = { ...userdata, ...listingdata, ...sessionObj };
 
   req.session.invoicedata = { ...invoicedata, tax };
-    req.flash("success", "Property booked successfully");
+  req.flash("success", "Property booked successfully");
   res.render("bookings/middle.ejs", {
     data: invoicedata,
     tax,
@@ -52,7 +52,6 @@ export async function createBooking(req, res) {
 
   // -------------------------
 }
-
 
 export async function saveToDatabase(req, res, next) {
   try {
@@ -75,15 +74,13 @@ export async function saveToDatabase(req, res, next) {
     user.bookings.push(data._id);
     await user.save();
 
-
     // ------------------------
 
-
     try {
-      await emailSender(req.session.invoicedata,req.user);
+      await emailSender(req.session.invoicedata, req.user);
       console.log("Confirmation email sent for booking");
     } catch (err) {
-    return next(new Error("Failed to send email: " + err.message));
+      return next(new Error("Failed to send email: " + err.message));
     }
 
     //------------------------------------
@@ -92,14 +89,13 @@ export async function saveToDatabase(req, res, next) {
 
     res.render("bookings/final.ejs", { data, time });
   } catch (error) {
-    return next(
-      new expressError(500, `something broke server-side`)
-    );
+    return next(new expressError(500, `something broke server-side`));
   }
 }
 
 export async function getAllBookings(req, res, next) {
   try {
+    res.locals.currentPage = "bookings";
     let bookingsData = await bookingModel
       .find({ userid: req.user._id })
       .populate("listingid");

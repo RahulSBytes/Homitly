@@ -86,6 +86,7 @@ app.use((req, res, next) => {  // contains the variables that you want to be ava
   res.locals.error = req.flash("error");
   res.locals.isHome = false;  // to check if the user is on homepage || this will be overrite in home/index route.
   res.locals.currUser = req.user; //now current user's info will be available every request 'req.user' is given by passportjs when user logs in
+  res.locals.currentPage =''
   next();
 });
 

@@ -1,6 +1,8 @@
 import listingModel from "../models/Listing.js";
+// import userModel from "../models/User.js";
 
 export async function index(req, res) {
+  res.locals.currentPage = 'listings'
   // console.log(res.locals.currUser ? res.locals.currUser : "its null");
 
   const data = await listingModel.find().populate("comments");
@@ -17,10 +19,12 @@ export async function index(req, res) {
   }
  */
   // console.log(data[0].comments[0].rating);
-  res.render("listings/index", { data, avgrating });
+  res.render("listings/index.ejs", { data, avgrating});
 }
 
 export async function createListingGet(req, res) {
+    res.locals.currentPage = 'newlisting'
+
   // no need to use async or to wrap with asyncWrapper coz no async task is being done here.
   res.render("listings/new");
 }
@@ -95,3 +99,6 @@ export async function updateListing(req, res) {
     next(error);
   }
 }
+
+
+

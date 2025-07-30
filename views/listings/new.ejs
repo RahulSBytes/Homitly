@@ -1,63 +1,320 @@
+<style>
+  /* Form container */
+  .listing-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+  }
+  
+  /* Form styling */
+  .new-listing {
+    width: 100%;
+    max-width: 600px;
+    padding: 32px;
+    border-radius: 12px;
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.08);
+    background-color: white;
+    margin-bottom: 40px;
+  }
+  
+  /* Form title */
+  .form-title {
+    font-size: 24px;
+    font-weight: 600;
+    color: #222222;
+    margin: 0 0 28px 0;
+    text-align: center;
+  }
+  
+  /* Section divider */
+  .form-section {
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #EEEEEE;
+  }
+  
+  .section-title {
+    font-size: 18px;
+    font-weight: 500;
+    color: #222222;
+    margin-bottom: 16px;
+  }
+  
+  /* Form grid for side-by-side fields */
+  .form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  
+  /* Labels */
+  .new-listing label {
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    color: #484848;
+    margin-bottom: 8px;
+    margin-top: 0.8rem;
+    text-transform: capitalize;
+  }
+  
+  /* Standard input fields */
+  .new-listing input:not([type="file"]),
+  .new-listing select {
+    width: 100%;
+    padding: 10px 16px;
+    font-size: 15px;
+    border: 1px solid #DDDDDD;
+    border-radius: 8px;
+    /* margin-top: 0.6rem; */
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
+    height: 40px;
+    background-color: white;
+  }
+  
+  .new-listing input:not([type="file"]):focus,
+  .new-listing select:focus,
+  .new-listing textarea:focus {
+    border-color: #FF385C;
+    box-shadow: 0 0 0 2px rgba(255, 56, 92, 0.2);
+    outline: none;
+  }
+  
+  /* Textarea styling */
+  .new-listing textarea {
+    width: 100%;
+    padding: 10px 16px;
+    font-size: 15px;
+    border: 1px solid #DDDDDD;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    transition: all 0.3s ease;
+    min-height: 100px;
+    resize: none;
+    font-family: inherit;
+  }
+  
+  /* Custom select styling */
+  .new-listing select {
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23484848' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 16px;
+    padding-right: 40px;
+  }
+  
+  /* File input styling */
+  .file-input-container {
+    position: relative;
+    width: 100%;
+    margin-bottom: 28px;
+  }
+  
+  .file-input-button {
+    display: block;
+    width: 100%;
+    padding: 10px 16px;
+    background-color: #F7F7F7;
+    border: 1px dashed #DDDDDD;
+    border-radius: 8px;
+    text-align: center;
+    color: #484848;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    height: 40px;
+    line-height: 20px;
+  }
+  
+  .file-input-button:hover {
+    background-color: #EBEBEB;
+    border-color: #BBBBBB;
+  }
+  
+  .new-listing input[type="file"] {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+  }
+  
+  .file-name {
+    margin-top: 8px;
+    font-size: 12px;
+    color: #717171;
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  
+  /* Submit button */
+  .new-listing button {
+    width: 100%;
+    padding: 12px 16px;
+    background-color: #FF385C;
+    color: white;
+    font-size: 16px;
+    font-weight: 500;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-top: 10px;
+    height: 44px;
+  }
+  
+  .new-listing button:hover {
+    background-color: #E31C5F;
+    transform: translateY(-2px);
+  }
+  
+  .new-listing button:active {
+    transform: translateY(0);
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 640px) {
+    .new-listing {
+      padding: 24px 16px;
+    }
+    
+    .form-grid {
+      grid-template-columns: 1fr;
+      gap: 0;
+    }
+    
+    .form-title {
+      font-size: 20px;
+      margin-bottom: 20px;
+    }
+  }
+</style>
 
+<div class="listing-container">
   <form class="new-listing" action="/listing" method="POST" enctype="multipart/form-data">
-        <h2 class="form-title">Provide Us Details</h2>
+    <h2 class="form-title">List Your Property</h2>
     
+    <div class="form-section">
+      <div class="section-title">Basic Information</div>
+      <label for="title">Title</label>
+      <input type="text" id="title" name="title" placeholder="Cozy Mountain Cabin" required />
+
+      <label for="description">Description</label>
+      <textarea id="description" name="description" placeholder="Describe your property, highlight unique features, nearby attractions, and what makes your place special..." required></textarea>
+    </div>
     
-    <label>title</label>
-    <input type="text" name="title" placeholder="Cozy Mountain Cabin" required />
+    <div class="form-section">
+      <div class="section-title">Property Details</div>
+      <div class="form-grid">
+        <div>
+          <label for="propertyType">Property Type</label>
+          <select id="propertyType" name="propertyType" required>
+            <option value="" disabled selected>Select type</option>
+            <option value="Apartment">Apartment</option>
+            <option value="House">House</option>
+            <option value="Villa">Villa</option>
+            <option value="Cabin">Cabin</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+        
+        <div>
+          <label for="roomType">Room Type</label>
+          <select id="roomType" name="roomType" required>
+            <option value="" disabled selected>Select type</option>
+            <option value="Entire place">Entire place</option>
+            <option value="Private room">Private room</option>
+            <option value="Shared room">Shared room</option>
+          </select>
+        </div>
+      </div>
+      
+      <div class="form-grid">
+        <div>
+          <label for="maxGuests">Max Guests</label>
+          <input type="number" id="maxGuests" name="maxGuests" min="1" required />
+        </div>
+        
+        <div>
+          <label for="bedrooms">Bedrooms</label>
+          <input type="number" id="bedrooms" name="bedrooms" min="0" required />
+        </div>
+      </div>
+      
+      <div class="form-grid">
+        <div>
+          <label for="beds">Beds</label>
+          <input type="number" id="beds" name="beds" min="0" required />
+        </div>
+        
+        <div>
+          <label for="bathroom">Bathrooms</label>
+          <input type="number" id="bathroom" name="bathroom" min="0" />
+        </div>
+      </div>
+      
+      <label for="amenities">Amenities (comma separated)</label>
+      <input type="text" id="amenities" name="amenities" placeholder="WiFi, Parking, Pool, Kitchen, Air conditioning" />
+    </div>
+    
+    <div class="form-section">
+      <div class="section-title">Location</div>
+      <label for="address">Address</label>
+      <input type="text" id="address" name="address" placeholder="Enter full address" />
+      
+      <div class="form-grid">
+        <div>
+          <label for="lat">Latitude</label>
+          <input type="text" id="lat" name="location[lat]" placeholder="e.g., 37.7749" />
+        </div>
+        
+        <div>
+          <label for="lng">Longitude</label>
+          <input type="text" id="lng" name="location[lng]" placeholder="e.g., -122.4194" />
+        </div>
+      </div>
+    </div>
+    
+    <div class="form-section">
+      <div class="section-title">Pricing</div>
+      <div class="form-grid">
+        <div>
+          <label for="pricePerNight">Price Per Night (₹)</label>
+          <input type="number" id="pricePerNight" name="pricePerNight" min="0" required />
+        </div>
+        
+        <div>
+          <label for="cleaningFee">Cleaning Fee (₹)</label>
+          <input type="number" id="cleaningFee" name="cleaningFee" min="0" value="0" />
+        </div>
+      </div>
+    </div>
+    
+    <div class="form-section">
+      <div class="section-title">Photos</div>
+      <label for="photos">Upload Image</label>
+      <div class="file-input-container">
+        <div class="file-input-button">Choose property photos</div>
+        <input type="file" id="photos" name="photos" accept="image/*" />
+        <div class="file-name"></div>
+      </div>
+    </div>
 
-    <label>description</label>
-    <textarea name="description" placeholder="Describe your property..." required></textarea>
-
-    <label>property Type</label>
-    <select  name="propertyType" required>
-      <option value="Apartment">Apartment</option>
-      <option value="House">House</option>
-      <option value="Villa">Villa</option>
-      <option value="Cabin">Cabin</option>
-      <option value="Other">Other</option>
-    </select>
-
-    <label>room type</label>
-    <select name="roomType" required>
-      <option value="Entire place">Entire place</option>
-      <option value="Private room">Private room</option>
-      <option value="Shared room">Shared room</option>
-    </select>
-
-    <label>max guests</label>
-    <input type="number" name="maxGuests" min="1" required />
-
-    <label>bedrooms</label>
-    <input type="number" name="bedrooms" min="0" required />
-
-    <label>beds</label>
-    <input type="number" name="beds" min="0" required />
-
-    <label>bathrooms</label>
-    <input type="number" name="bathroom" min="0" />
-
-    <label>amenities (comma separated)</label>
-    <input type="text" name="amenities" placeholder="WiFi, Parking, Pool" />
-
-
-    <label>address</label>
-    <input type="text" name="address" placeholder="enter address" />
-
-    <label>latitude</label>
-    <input type="text" name="location[lat]" placeholder="Latitude (optional)" />
-
-    <label>longitude</label>
-    <input type="text" name="location[lng]" placeholder="Longitude (optional)" />
-
-    <label>price Per Night ($)</label>
-    <input type="number" name="pricePerNight" min="0" required />
-
-    <label>cleaning Fee ($)</label>
-    <input type="number" name="cleaningFee" min="0" value="0" />
-
-    <label>upload image</label>
-    <input type="file" name="photos" />
-
-    <button type="submit">Submit</button>
+    <button type="submit">List My Property</button>
   </form>
+</div>
+
+<script>
+  // Display file name when file is selected
+  document.getElementById('photos').addEventListener('change', function() {
+    const fileName = this.files[0] ? this.files[0].name : 'No file selected';
+    document.querySelector('.file-name').textContent = fileName;
+  });
+</script>
