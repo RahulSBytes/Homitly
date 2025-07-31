@@ -1,6 +1,5 @@
 import listingModel from "../models/Listing.js";
 import dataWithAvgRating from "../utils/avgRating.js";
-// import expressError from "../utility/errorClass.js";
 
 export async function searchcontroller(req, res) {
   res.locals.isHome = true;

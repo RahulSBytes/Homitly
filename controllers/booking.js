@@ -47,13 +47,11 @@ export async function createBooking(req, res) {
     tax,
   });
 
-  // -------------------------
 }
 
 export async function saveToDatabase(req, res, next) {
   try {
     let data = await bookingModel.create(req.session.bookingData);
-    // let populatedData = await data.populate('userid').populate('listingid');
     let populatedData = await bookingModel.populate(data, [
       { path: "userid" },
       {
@@ -71,7 +69,6 @@ export async function saveToDatabase(req, res, next) {
     user.bookings.push(data._id);
     await user.save();
 
-    // ------------------------
 
     try {
       await emailSender(req.session.invoicedata, req.user);
@@ -80,7 +77,6 @@ export async function saveToDatabase(req, res, next) {
       return next(new Error("Failed to send email: " + err.message));
     }
 
-    //------------------------------------
 
     delete req.session.bookingData;
 
@@ -120,7 +116,6 @@ export async function getAllBookings(req, res, next) {
 
     res.render("bookings/bookedlist.ejs", { bookings: bookingsWithStatus });
   } catch (error) {
-    // console.log(error);
     next(error);
   }
 }

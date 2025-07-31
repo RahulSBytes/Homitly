@@ -9,22 +9,17 @@
   font-family: "Nunito Sans", sans-serif;
   width: 100%;
   height: 100%;
-  /* border: 2px solid green; */
-  /* <weight>: Use a value from 200 to 1000 */
 }
 
 main {
-  /* border: 2px solid red; */
   padding: 2rem 2rem;
   width: 90%;
   margin: 0 auto;
-  /* border: 2px solid green; */
 }
 
 .flash {
   width: 100%;
   background-color: #ffb5c2;
-  /* padding-left: 2rem; */
   font-size: 0.9rem;
   padding: 2px 2rem;
 }

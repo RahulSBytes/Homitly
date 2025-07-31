@@ -5,7 +5,6 @@
         align-items: center;
         padding: 1rem 2rem;
         border-bottom: 1px solid #e4e4e4;
-        /* box-shadow: 0 1px 12px rgba(0, 0, 0, 0.08); */
         position: sticky;
         top: 0;
         background-color: white;
@@ -19,9 +18,9 @@
     }
 
     .logo {
-        font-family: "Circular", -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif;
+        font-family: "Pangolin", cursive, sans-serif;
         text-decoration: none;
-        font-size: 1.4rem;
+        font-size: 1.6rem;
         color: black;
         font-weight: 700;
         display: flex;
@@ -89,7 +88,6 @@
         display: flex;
         align-items: center;
         gap: 0.5rem;
-        /* border: 2px solid green; */
         background-color: white;
         border: 1px solid #DDDDDD;
         border-radius: 40px;
@@ -119,7 +117,6 @@
         font-weight: 400;
         width: 250px;
         margin-inline: 0.7rem;
-        /* border: 2px solid red !important; */
         height: 100%;
         display: flex;
         align-items: center;
@@ -154,7 +151,6 @@
         background-color: #FF385C;
         padding: 0.5rem;
         border-radius: 50%;
-        /* background-color: #F7F7F7; */
         transition: background-color 0.3s ease;
         margin-right: 0.5rem;
         width: 36px;
@@ -260,7 +256,6 @@
         display: flex;
     }
 
-    /* Minimal search bar for smaller screens */
     .mobile-search {
         display: flex;
         align-items: center;
@@ -292,7 +287,6 @@
         justify-content: center;
     }
 
-    /* Responsive Design */
     @media (max-width: 1100px) {
         .navs>a:not(.hamburgur):not(.avatar) {
             display: none;
@@ -344,7 +338,7 @@
     }
 
 
-    /* ------------------- */
+
     .active {
         background-color: #F7F7F7 !important;
         color: #FF385C !important;
@@ -397,20 +391,17 @@
         const navs = document.querySelector('.navs');
         const searchOriginal = document.querySelector('.search');
 
-        // Create search icon for mobile
         const searchIconMobile = document.createElement('div');
         searchIconMobile.className = 'search-icon-mobile';
         searchIconMobile.innerHTML = '<i class="fa-solid fa-magnifying-glass fa-lg" style="color: white;"></i>';
         navs.prepend(searchIconMobile);
 
-        // Create mobile menu container
+
         const mobileMenu = document.createElement('div');
         mobileMenu.className = 'mobile-menu';
 
-        // Get all links from navs (exclude hamburger and avatar)
         const links = document.querySelectorAll('.navs > a');
 
-        // Clone links to mobile menu
         links.forEach(link => {
             if (!link.classList.contains('hamburgur') && !link.querySelector('.avatar')) {
                 const clonedLink = link.cloneNode(true);
@@ -418,10 +409,8 @@
             }
         });
 
-        // Append mobile menu to nav
         nav.appendChild(mobileMenu);
 
-        // Create mobile search view container
         const mobileSearchView = document.createElement('div');
         mobileSearchView.className = 'mobile-search-view';
 
@@ -448,35 +437,28 @@
         mobileSearch.appendChild(mobileSearchInput);
         mobileSearch.appendChild(mobileSearchBtn);
 
-        // Assemble mobile search view
         mobileSearchView.appendChild(backButton);
         mobileSearchView.appendChild(mobileSearch);
 
-        // Append mobile search view to nav
+
         nav.appendChild(mobileSearchView);
 
-        // Toggle mobile search view on search icon click
         searchIconMobile.addEventListener('click', function (event) {
             mobileSearchView.classList.add('show');
             event.stopPropagation();
-
-            // Focus on search input
             mobileSearchInput.focus();
         });
 
-        // Back button click handler
         backButton.addEventListener('click', function (event) {
             mobileSearchView.classList.remove('show');
             event.stopPropagation();
         });
 
-        // Toggle mobile menu on hamburger click
         hamburger.addEventListener('click', function (event) {
             mobileMenu.classList.toggle('show');
             event.stopPropagation();
         });
 
-        // Close mobile menu and search when clicking outside
         document.addEventListener('click', function (event) {
             if (!hamburger.contains(event.target) && !mobileMenu.contains(event.target)) {
                 mobileMenu.classList.remove('show');

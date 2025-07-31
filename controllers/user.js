@@ -3,7 +3,6 @@ import userModel from "../models/User.js";
 import dataWithAvgRating from "../utils/avgRating.js";
 
 export async function registeredUser(req, res, next) {
-  // console.log(req.file, ".......", req.body);
   const { username, email, password } = req.body;
   const newUser = new userModel({ username, email, avatar: req.file.path });
   const registeredUser = await userModel.register(newUser, password);
@@ -25,7 +24,6 @@ export async function registeredUser(req, res, next) {
 
 export function logOut(req, res, next) {
   req.logout((err) => {
-    // using .deserializeUser()
     if (err) {
       return next(err);
     }

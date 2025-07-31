@@ -1,9 +1,5 @@
-// import { ref } from "joi";
 import mongoose from "mongoose";
 import passportLocalMongoose from "passport-local-mongoose";
-// import bookingModel from "./Booking.js";
-// import { required } from "joi";
-
 const userSchema = mongoose.Schema({
   avatar: {
     type: String,

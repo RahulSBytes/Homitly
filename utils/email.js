@@ -7,29 +7,22 @@ import { fileURLToPath } from "url";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 export async function emailSender(data, user) {
-// console.log(data)
 
   try {
-    // Render EJS to HTML
     const html = await ejs.renderFile(
       path.join(__dirname, "../views/bookings/middle.ejs"),
       { data }
     );
 
-    // Launch Puppeteer to convert HTML → PDF
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
 
-    // Load the HTML content
     await page.setContent(html, { waitUntil: "networkidle0" });
 
-    // Generate PDF
     const pdfBuffer = await page.pdf({ format: "A4", printBackground: true });
 
     await browser.close();
-    // console.log("PDF generated for booking:", data._id);
 
-    // Send email with PDF attached
     const transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
@@ -62,7 +55,6 @@ export async function emailSender(data, user) {
     The Cozy Stay Team</p>
   `,
 
-      // ------------------------------
 
       attachments: [
         {
@@ -73,7 +65,6 @@ export async function emailSender(data, user) {
     });
   } catch (err) {
     console.error("EmailSender failed:", err.message);
-    // Rethrow so the controller's `catch` can catch it
     throw new Error("Something Broke: ", err.message);
   }
 }

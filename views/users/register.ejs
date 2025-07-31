@@ -1,5 +1,5 @@
 <style>
-  /* Form container */
+
   .register {
     display: flex;
     justify-content: center;
@@ -8,7 +8,7 @@
     padding: 20px;
   }
   
-  /* Form styling */
+
   .new-listing {
     width: 100%;
     max-width: 420px;
@@ -23,7 +23,7 @@
     transform: translateY(-3px);
   }
   
-  /* Form title */
+
   .form-title {
     font-size: 24px;
     font-weight: 600;
@@ -32,7 +32,7 @@
     text-align: center;
   }
   
-  /* Labels */
+
   .new-listing label {
     display: block;
     font-size: 14px;
@@ -42,7 +42,7 @@
     margin-bottom: 8px;
   }
   
-  /* Standard input fields */
+  
   .new-listing input:not([type="file"]) {
     width: 100%;
     padding: 10px 16px;
@@ -60,7 +60,7 @@
     outline: none;
   }
   
-  /* Custom file input styling */
+
   .file-input-container {
     position: relative;
     width: 100%;
@@ -107,7 +107,7 @@
     white-space: nowrap;
   }
   
-  /* Submit button */
+  
   .new-listing button {
     width: 100%;
     padding: 12px 16px;
@@ -118,7 +118,6 @@
     border: none;
     border-radius: 8px;
     cursor: pointer;
-    /* margin-top: 1rem; */
     transition: background-color 0.3s ease, transform 0.2s ease;
     margin-top: 1.2rem;
     height: 44px;
@@ -133,7 +132,6 @@
     transform: translateY(0);
   }
   
-  /* Form divider */
   .form-divider {
     display: flex;
     align-items: center;
@@ -154,7 +152,6 @@
     font-size: 14px;
   }
   
-  /* Responsive adjustments */
   @media (max-width: 480px) {
     .new-listing {
       padding: 24px 16px;
@@ -200,7 +197,6 @@
 </div>
 
 <script>
-    // Display file name when file is selected
     document.getElementById('avatar').addEventListener('change', function() {
         const fileName = this.files[0] ? this.files[0].name : 'No file selected';
         document.querySelector('.file-name').textContent = fileName;

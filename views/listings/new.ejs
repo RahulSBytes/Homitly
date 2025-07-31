@@ -1,5 +1,4 @@
 <style>
-  /* Form container */
   .listing-container {
     display: flex;
     justify-content: center;
@@ -7,7 +6,6 @@
     padding: 40px 20px;
   }
   
-  /* Form styling */
   .new-listing {
     width: 100%;
     max-width: 600px;
@@ -18,7 +16,6 @@
     margin-bottom: 40px;
   }
   
-  /* Form title */
   .form-title {
     font-size: 24px;
     font-weight: 600;
@@ -27,7 +24,6 @@
     text-align: center;
   }
   
-  /* Section divider */
   .form-section {
     margin-bottom: 20px;
     padding-bottom: 20px;
@@ -41,14 +37,12 @@
     margin-bottom: 16px;
   }
   
-  /* Form grid for side-by-side fields */
   .form-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 20px;
   }
   
-  /* Labels */
   .new-listing label {
     display: block;
     font-size: 14px;
@@ -59,7 +53,6 @@
     text-transform: capitalize;
   }
   
-  /* Standard input fields */
   .new-listing input:not([type="file"]),
   .new-listing select {
     width: 100%;
@@ -67,7 +60,6 @@
     font-size: 15px;
     border: 1px solid #DDDDDD;
     border-radius: 8px;
-    /* margin-top: 0.6rem; */
     margin-bottom: 20px;
     transition: all 0.3s ease;
     height: 40px;
@@ -82,7 +74,6 @@
     outline: none;
   }
   
-  /* Textarea styling */
   .new-listing textarea {
     width: 100%;
     padding: 10px 16px;
@@ -96,7 +87,6 @@
     font-family: inherit;
   }
   
-  /* Custom select styling */
   .new-listing select {
     appearance: none;
     background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23484848' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
@@ -106,7 +96,6 @@
     padding-right: 40px;
   }
   
-  /* File input styling */
   .file-input-container {
     position: relative;
     width: 100%;
@@ -312,7 +301,6 @@
 </div>
 
 <script>
-  // Display file name when file is selected
   document.getElementById('photos').addEventListener('change', function() {
     const fileName = this.files[0] ? this.files[0].name : 'No file selected';
     document.querySelector('.file-name').textContent = fileName;

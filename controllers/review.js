@@ -18,7 +18,6 @@ export async function deleteReview(req, res){
     listData.comments.push(reviewData._id);
     // coz we altered the listing document we gotta save it explicitly
     await listData.save();
-    // let populatedListing = await listData.populate('comments')
     req.flash("success", "review posted");
     res.redirect(`/listing/${req.params.id}`);
   }

@@ -1,8 +1,7 @@
 .starability-result {
             position: relative;
-            width: 60px; /* Changed from 100px to 60px (5 stars × 12px each) */
-            height: 12px; /* Changed from 20px to 12px */
-            /* Light grey faded stars background */
+            width: 60px; 
+            height: 12px; 
             background-image: url("data:image/svg+xml;charset=utf8,%3Csvg width='12' height='12' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolygon fill='%23d3d3d3' points='6,1 7.8,4.2 11.4,4.2 8.7,6.6 9.6,10.2 6,7.8 2.4,10.2 3.3,6.6 0.6,4.2 4.2,4.2'/%3E%3C/svg%3E");
             background-repeat: repeat-x;
             background-size: 12px 12px;
@@ -14,40 +13,39 @@
             content: ' ';
             position: absolute;
             left: 0;
-            height: 12px; /* Changed from 20px to 12px */
-            /* Dark grey highlighted stars */
+            height: 12px; 
             background-image: url("data:image/svg+xml;charset=utf8,%3Csvg width='12' height='12' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolygon fill='%23212121' points='6,1 7.8,4.2 11.4,4.2 8.7,6.6 9.6,10.2 6,7.8 2.4,10.2 3.3,6.6 0.6,4.2 4.2,4.2'/%3E%3C/svg%3E");
             background-repeat: repeat-x;
             background-size: 12px 12px;
         }
 
-        /* Updated width values for different ratings (each star is now 12px) */
+        
         .starability-result[data-rating="5"]::after {
-            width: 60px; /* 5 × 12px */
+            width: 60px; 
         }
 
         .starability-result[data-rating="4"]::after {
-            width: 48px; /* 4 × 12px */
+            width: 48px;
         }
 
         .starability-result[data-rating="3"]::after {
-            width: 36px; /* 3 × 12px */
+            width: 36px; 
         }
 
         .starability-result[data-rating="2"]::after {
-            width: 24px; /* 2 × 12px */
+            width: 24px; 
         }
 
         .starability-result[data-rating="1"]::after {
-            width: 12px; /* 1 × 12px */
+            width: 12px; 
         }
 
-        /* Interactive star rating form styles */
+
         .starability-coinFlip {
             display: block;
             position: relative;
-            width: 100px; /* Changed from 150px to 100px */
-            min-height: 40px; /* Reduced from 60px to 40px */
+            width: 100px; 
+            min-height: 40px; 
             padding: 0;
             border: none;
             will-change: contents;
@@ -66,7 +64,7 @@
 
         .starability-coinFlip > input:checked + label,
         .starability-coinFlip > input:focus + label {
-            background-position: 0 -20px; /* Changed from -30px to -20px */
+            background-position: 0 -20px; 
         }
 
         .starability-coinFlip > input[disabled]:hover + label {
@@ -78,7 +76,7 @@
         }
 
         .starability-coinFlip > input:not([disabled]):hover + label {
-            background-position: 0 -20px; /* Changed from -30px to -20px */
+            background-position: 0 -20px; 
         }
 
         .starability-coinFlip > input:not([disabled]):hover + label::before {
@@ -93,7 +91,7 @@
             position: absolute;
             left: 0;
             width: 100%;
-            height: 20px; /* Changed from 30px to 20px */
+            height: 20px; 
             outline: 2px dotted #999;
             pointer-events: none;
             opacity: 0;
@@ -107,47 +105,47 @@
             position: relative;
             display: inline-block;
             float: left;
-            width: 20px; /* Changed from 30px to 20px */
-            height: 20px; /* Changed from 30px to 20px */
+            width: 20px; 
+            height: 20px; 
             font-size: 0.1em;
             color: transparent;
             cursor: pointer;
             background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAA8CAMAAABGivqtAAAAxlBMVEUAAACZmZn2viTHuJ72viOampqampr1viSampr3vySampqdnZ34wiX1vSSampr1vSOZmZmampr1viT2vSOampr2viT2viSampr2viSampr2vyX4vyWbm5v3vSSdnZ32wSadnZ36wCWcnJyZmZn/wSr/2ySampr2vSP2viSZmZn2vSSZmZn2vST2viSampr2viSbm5ubm5uZmZn1vSSampqbm5v2vSWampqampr3vSf5wiT5vyagoKD/xCmkpKT/yCSZmZn1vSO4V2dEAAAAQHRSTlMA+vsG9fO6uqdgRSIi7+3q39XVqZWVgnJyX09HPDw1NTAwKRkYB+jh3L6+srKijY2Ef2lpYllZUU5CKigWFQ4Oneh1twAAAZlJREFUOMuV0mdzAiEQBmDgWq4YTWIvKRqT2Htv8P//VJCTGfYQZnw/3fJ4tyO76KE0m1b2fZu+U/pu4QGlA7N+Up5PIz9d+cmkbSrSNr9seT3GKeNYIyeO5j16S28exY5suK0U/QKmmeCCX6xs22hJLVkitMImxCvEs8EG3SCRCN/ViFPqnq5epIzZ07QJJvkM9Tkz1xnkmXbfSvR7f4H8AtXBkLGj74mMvjM1+VHZpAZ4LM4K/LBWEI9jwP71v1ZEQ6dyvQMf8A/1pmdZnKce/VH1iIsdte4U8VEtY23xOujxtFpWDgKbfjD2YeEhY0OzfjGeLyO/XfnNpAcmcjDwKOXRfU1IyiTRyEkaiz67pb9oJHJb9vVqKfgjLBPyF5Sq9T0KmSUhQmtiQrJGPHVi0DoSabj31G2gW3buHd0pY85lNdcCk8xlNDPXMuSyNiwl+theIb9C7RLIpKvviYy+M6H8qGwSAp6Is19+GP6KxwnggJ/kq6Jht5rnRQA4z9zyRRaXssvyqp5I6Vutv0vkpJaJtnjpz/8B19ytIayazLoAAAAASUVORK5CYII=");
             background-repeat: no-repeat;
-            background-position: 0 -20px; /* Changed from -30px to -20px */
-            background-size: 20px auto; /* Scale background to 20px width */
+            background-position: 0 -20px; 
+            background-size: 20px auto; 
         }
 
         .starability-coinFlip > label::before {
             content: '';
             position: absolute;
             display: block;
-            height: 20px; /* Changed from 30px to 20px */
+            height: 20px; 
             background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAA8CAMAAABGivqtAAAAxlBMVEUAAACZmZn2viTHuJ72viOampqampr1viSampr3vySampqdnZ34wiX1vSSampr1vSOZmZmampr1viT2vSOampr2viT2viSampr2viSampr2vyX4vyWbm5v3vSSdnZ32wSadnZ36wCWcnJyZmZn/wSr/2ySampr2vSP2viSZmZn2vSSZmZn2vST2viSampr2viSbm5ubm5uZmZn1vSSampqbm5v2vSWampqampr3vSf5wiT5vyagoKD/xCmkpKT/yCSZmZn1vSO4V2dEAAAAQHRSTlMA+vsG9fO6uqdgRSIi7+3q39XVqZWVgnJyX09HPDw1NTAwKRkYB+jh3L6+srKijY2Ef2lpYllZUU5CKigWFQ4Oneh1twAAAZlJREFUOMuV0mdzAiEQBmDgWq4YTWIvKRqT2Htv8P//VJCTGfYQZnw/3fJ4tyO76KE0m1b2fZu+U/pu4QGlA7N+Up5PIz9d+cmkbSrSNr9seT3GKeNYIyeO5j16S28exY5suK0U/QKmmeCCX6xs22hJLVkitMImxCvEs8EG3SCRCN/ViFPqnq5epIzZ07QJJvkM9Tkz1xnkmXbfSvR7f4H8AtXBkLGj74mMvjM1+VHZpAZ4LM4K/LBWEI9jwP71v1ZEQ6dyvQMf8A/1pmdZnKce/VH1iIsdte4U8VEtY23xOujxtFpWDgKbfjD2YeEhY0OzfjGeLyO/XfnNpAcmcjDwKOXRfU1IyiTRyEkaiz67pb9oJHJb9vVqKfgjLBPyF5Sq9T0KmSUhQmtiQrJGPHVi0DoSabj31G2gW3buHd0pY85lNdcCk8xlNDPXMuSyNiwl+theIb9C7RLIpKvviYy+M6H8qGwSAp6Is19+GP6KxwnggJ/kq6Jht5rnRQA4z9zyRRaXssvyqp5I6Vutv0vkpJaJtnjpz/8B19ytIayazLoAAAAASUVORK5CYII=");
-            background-position: 0 20px; /* Adjusted for 20px positioning */
-            background-size: 20px auto; /* Scale background to 20px width */
+            background-position: 0 20px; 
+            background-size: 20px auto; 
             pointer-events: none;
             opacity: 0;
         }
 
-        /* Updated positioning for different star positions (each star is now 20px) */
+       
         .starability-coinFlip > label:nth-of-type(5)::before {
-            width: 80px; /* 4 × 20px */
+            width: 80px;
             left: -80px;
         }
 
         .starability-coinFlip > label:nth-of-type(4)::before {
-            width: 60px; /* 3 × 20px */
+            width: 60px; 
             left: -60px;
         }
 
         .starability-coinFlip > label:nth-of-type(3)::before {
-            width: 40px; /* 2 × 20px */
+            width: 40px; 
             left: -40px;
         }
 
         .starability-coinFlip > label:nth-of-type(2)::before {
-            width: 20px; /* 1 × 20px */
+            width: 20px;
             left: -20px;
         }
 
@@ -160,18 +158,17 @@
             content: ' ';
             position: absolute;
             opacity: 0;
-            width: 20px; /* Changed from 30px to 20px */
-            height: 20px; /* Changed from 30px to 20px */
+            width: 20px; 
+            height: 20px; 
             background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAA8CAMAAABGivqtAAAAxlBMVEUAAACZmZn2viTHuJ72viOampqampr1viSampr3vySampqdnZ34wiX1vSSampr1vSOZmZmampr1viT2vSOampr2viT2viSampr2viSampr2vyX4vyWbm5v3vSSdnZ32wSadnZ36wCWcnJyZmZn/wSr/2ySampr2vSP2viSZmZn2vSSZmZn2vST2viSampr2viSbm5ubm5uZmZn1vSSampqbm5v2vSWampqampr3vSf5wiT5vyagoKD/xCmkpKT/yCSZmZn1vSO4V2dEAAAAQHRSTlMA+vsG9fO6uqdgRSIi7+3q39XVqZWVgnJyX09HPDw1NTAwKRkYB+jh3L6+srKijY2Ef2lpYllZUU5CKigWFQ4Oneh1twAAAZlJREFUOMuV0mdzAiEQBmDgWq4YTWIvKRqT2Htv8P//VJCTGfYQZnw/3fJ4tyO76KE0m1b2fZu+U/pu4QGlA7N+Up5PIz9d+cmkbSrSNr9seT3GKeNYIyeO5j16S28exY5suK0U/QKmmeCCX6xs22hJLVkitMImxCvEs8EG3SCRCN/ViFPqnq5epIzZ07QJJvkM9Tkz1xnkmXbfSvR7f4H8AtXBkLGj74mMvjM1+VHZpAZ4LM4K/LBWEI9jwP71v1ZEQ6dyvQMf8A/1pmdZnKce/VH1iIsdte4U8VEtY23xOujxtFpWDgKbfjD2YeEhY0OzfjGeLyO/XfnNpAcmcjDwKOXRfU1IyiTRyEkaiz67pb9oJHJb9vVqKfgjLBPyF5Sq9T0KmSUhQmtiQrJGPHVi0DoSabj31G2gW3buHd0pY85lNdcCk8xlNDPXMuSyNiwl+theIb9C7RLIpKvviYy+M6H8qGwSAp6Is19+GP6KxwnggJ/kq6Jht5rnRQA4z9zyRRaXssvyqp5I6Vutv0vkpJaJtnjpz/8B19ytIayazLoAAAAASUVORK5CYII=");
             background-repeat: no-repeat;
-            background-size: 20px auto; /* Scale background to 20px width */
+            background-size: 20px auto; 
             bottom: 0;
             left: 0;
             z-index: 2;
         }
 
         .starability-coinFlip > input:checked + label::after {
-            background-position: 0 -20px; /* Changed from -30px to -20px */
             opacity: 1;
             animation-name: coinFlip;
             animation-duration: 1.2s;
@@ -179,18 +176,17 @@
             animation-timing-function: ease-in-out;
         }
 
-        /* Animation remains the same but with adjusted transform values */
         @keyframes coinFlip {
             0% {
                 transform: translateY(0);
                 opacity: 0;
             }
             25% {
-                transform: translateY(-24px); /* Reduced from -34px */
+                transform: translateY(-24px); 
                 opacity: 1;
             }
             30% {
-                transform: translateY(-20px); /* Reduced from -30px */
+                transform: translateY(-20px); 
             }
             35% {
                 transform: translateY(-20px) rotateY(0deg);
@@ -202,7 +198,7 @@
                 transform: translateY(-20px) rotateY(0deg);
             }
             85% {
-                transform: translateY(-24px); /* Reduced from -34px */
+                transform: translateY(-24px);
                 opacity: 1;
             }
             100% {
