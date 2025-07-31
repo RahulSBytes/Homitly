@@ -28,6 +28,8 @@ export async function createListingPost(req, res) {
   res.redirect("/listing");
 }
 
+
+
 export async function showListing(req, res) {
   // throw new expressError("middleware")
   const data = await listingModel
@@ -41,14 +43,20 @@ export async function showListing(req, res) {
     })
     .populate("host"); // chainning posible
 
+
   if (!data) {
     req.flash("error", "accessed listing is not available");
     res.redirect("/listing");
   }
 
-  // console.log(data.comments[0].author.avatar)
+
+  // res.locals.loc =[data.location.lat, data.location.lng]
+
+
   res.render("listings/show", { data });
 }
+
+
 
 export async function deleteListing(req, res) {
   await listingModel.findOneAndDelete({ _id: req.params.id });

@@ -1,487 +1,482 @@
-
 <style>
-    /* Airbnb-style CSS for Property Listing */
+  /* Airbnb-style CSS for Property Listing */
 
-:root {
-  --airbnb-red: #FF385C;
-  --airbnb-dark: #222222;
-  --airbnb-gray: #717171;
-  --airbnb-light-gray: #DDDDDD;
-  --airbnb-font: 'Circular', -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
-  --section-spacing: 32px;
-}
+  :root {
+    --airbnb-red: #FF385C;
+    --airbnb-dark: #222222;
+    --airbnb-gray: #717171;
+    --airbnb-light-gray: #DDDDDD;
+    --airbnb-font: 'Circular', -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
+    --section-spacing: 32px;
+  }
 
-.show-section {
-  max-width: 1120px;
-  margin: 0 auto;
-  padding: 0 80px;
-}
+  .show-section {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 0 80px;
+  }
 
-.show-section h2 {
-  font-size: 26px;
-  font-weight: 600;
-  margin-bottom: 24px;
-  color: var(--airbnb-dark);
-}
+  .show-section h2 {
+    font-size: 26px;
+    font-weight: 600;
+    margin-bottom: 24px;
+    color: var(--airbnb-dark);
+  }
 
-.show-image {
-  width: 100%;
-  border-radius: 12px;
-  height: 500px;
-  object-fit: cover;
-  margin-bottom: 24px;
-}
+  .show-image {
+    width: 100%;
+    border-radius: 12px;
+    height: 500px;
+    object-fit: cover;
+    margin-bottom: 24px;
+  }
 
-.title-address {
-  font-size: 22px;
-  font-weight: 600;
-  margin-bottom: 8px;
-}
+  .title-address {
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
 
-.space-details {
-  margin-top: 0.8rem;
-  font-size: 16px;
-  color: var(--airbnb-dark);
-  margin-bottom: 24px;
-}
+  .space-details {
+    margin-top: 0.8rem;
+    font-size: 16px;
+    color: var(--airbnb-dark);
+    margin-bottom: 24px;
+  }
 
-.host-group {
-  display: flex;
-  align-items: center;
-  margin-bottom: 7px;
-}
+  .host-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 7px;
+  }
 
-.host-group img {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  /* margin-right: 7px; */
-  object-fit: cover;
-}
+  .host-group img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    /* margin-right: 7px; */
+    object-fit: cover;
+  }
 
-.host-group h4, .host-group h5 {
-  margin: 0;
-  font-weight: 600;
-}
+  .host-group h4,
+  .host-group h5 {
+    margin: 0;
+    font-weight: 600;
+  }
 
-.buttons {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-top: 1.5rem;
-  margin-bottom: var(--section-spacing);
-}
+  .buttons {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 1.5rem;
+    margin-bottom: var(--section-spacing);
+  }
 
-.btn {
-  display: inline-block;
-  height: 2rem;
-  width: 4rem;
-  margin-top: 0.2rem;
-  border-radius: 8px;
-  font-size: 14px;
-  font-weight: 500;
-  text-decoration: none;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  background-color: #fff;
-}
+  .btn {
+    display: inline-block;
+    height: 2rem;
+    width: 4rem;
+    margin-top: 0.2rem;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    background-color: #fff;
+  }
 
-.update-listing {
-  padding-top: 5px;
-  color: var(--airbnb-dark);
-  border: 1px solid var(--airbnb-dark);
-}
+  .update-listing {
+    padding-top: 5px;
+    color: var(--airbnb-dark);
+    border: 1px solid var(--airbnb-dark);
+  }
 
-.delete-listing {
-  color: var(--airbnb-red);
-  border: 1px solid var(--airbnb-red);
-}
+  .delete-listing {
+    color: var(--airbnb-red);
+    border: 1px solid var(--airbnb-red);
+  }
 
-/* .update-listing:hover, .delete-listing:hover {
+  /* .update-listing:hover, .delete-listing:hover {
   background-color: #f7f7f7;
 } */
 
 
-.delete-form-button{
-  background-color: white ;
-}
-
-.description {
-  margin-bottom: var(--section-spacing);
-  padding-top: 24px;
-  border-top: 1px solid var(--airbnb-light-gray);
-}
-
-.description h5 {
-  font-size: 16px;
-  font-weight: 600;
-  margin-bottom: 8px;
-}
-
-.description p {
-  font-size: 16px;
-  line-height: 1.5;
-  color: var(--airbnb-dark);
-}
-
-
-a[href^="/bookings/"] {
-  display: block;
-  background: linear-gradient(to right, #E61E4D 0%, #E31C5F 50%, #D70466 100%);
-  color: white;
-  padding: 12px 24px;
-  border-radius: 8px;
-  font-size: 16px;
-  font-weight: 600;
-  text-decoration: none;
-  margin: 10px 0 16px;
-  text-align: center;
-  width: 200px;
-  box-shadow: 0 6px 16px rgba(0,0,0,0.12);
-  transition: transform 0.2s, box-shadow 0.2s;
-  letter-spacing: 0.5px;
-  text-transform: none;
-  border: none;
-  position: relative;
-  overflow: hidden;
-}
-
-a[href^="/bookings/"]:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.16);
-}
-
-a[href^="/bookings/"]:active {
-  transform: translateY(0);
-  box-shadow: 0 6px 16px rgba(0,0,0,0.12);
-}
-
-hr {
-  border: none;
-  height: 1px;
-  background-color: var(--airbnb-light-gray);
-  margin: var(--section-spacing) 0;
-}
-
-/* Review section */
-.review-section {
-  margin-bottom: var(--section-spacing);
-}
-
-.review-section h2 {
-  font-size: 22px;
-  margin-bottom: 24px;
-}
-
-.review-form {
-  margin-bottom: 32px;
-  border: 1px solid var(--airbnb-light-gray);
-  padding: 24px;
-  border-radius: 12px;
-  background-color: #fff;
-}
-
-.review-form textarea {
-  width: 100%;
-  border: 1px solid var(--airbnb-light-gray);
-  border-radius: 8px;
-  padding: 12px;
-  margin-top: 5px;
-  font-family: var(--airbnb-font);
-  resize: none;
-}
-
-/* Make sure to preserve the starability rating system */
-.starability-coinFlip {
-  margin-top: 16px;
-}
-
-.submit-review {
-  background-color: var(--airbnb-red);
-  color: white;
-  border: none;
-  width: min-content;
-  padding: 7px 16px;
-  border-radius: 8px;
-  font-weight: 500;
-  cursor: pointer;
-  /* margin-top: 5px; */
-  transition: background-color 0.2s;
-}
-
-.submit-review:hover {
-  background-color: #E00B41;
-}
-
-.review-box-parent {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
-}
-
-.review-box {
-  padding: 24px;
-  border-radius: 12px;
-  background-color: #FFFFFF;
-  position: relative;
-  border: 1px solid var(--airbnb-light-gray);
-  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-}
-
-.author-name-box {
-  display: flex;
-  flex-direction: column;
-}
-
-.author-name-box h5 {
-  margin: 0;
-  font-weight: 600;
-  font-size: 16px;
-}
-
-.review-box i {
-  display: block;
-  /* margin-top: 16px; */
-  color: var(--airbnb-dark);
-}
-
-.delete-review {
-  position: absolute;
-  top: 12px;
-  right: 12px;
-  background-color: transparent;
-  color: var(--airbnb-gray);
-  border: none;
-  cursor: pointer;
-  font-size: 0;
-  width: 24px;
-  height: 24px;
-  opacity: 0.7;
-  transition: opacity 0.2s;
-}
-
-.delete-review:hover {
-  opacity: 1;
-}
-
-/* Delete icon */
-.delete-review::before {
-  content: "×";
-  font-size: 24px;
-  line-height: 24px;
-  display: block;
-}
-
-
-
-
-/* Map section */
-.map-section {
-  margin-top: var(--section-spacing);
-  margin-bottom: var(--section-spacing);
-}
-
-.map-section h3 {
-  font-size: 22px;
-  font-weight: 600;
-  margin-bottom: 8px;
-}
-
-.map-section p {
-  margin-bottom: 16px;
-  color: var(--airbnb-gray);
-}
-
-#map {
-  height: 320px;
-  width: 100%;
-  border-radius: 12px;
-  overflow: hidden;
-  border: 1px solid var(--airbnb-light-gray);
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  .show-section {
-    padding: 16px;
+  .delete-form-button {
+    background-color: white;
   }
-  
-  .show-image {
-    height: 300px;
+
+  .description {
+    margin-bottom: var(--section-spacing);
+    padding-top: 24px;
+    border-top: 1px solid var(--airbnb-light-gray);
   }
-  
-  #map {
-    height: 250px;
+
+  .description h5 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 8px;
   }
-  
+
+  .description p {
+    font-size: 16px;
+    line-height: 1.5;
+    color: var(--airbnb-dark);
+  }
+
+
+  a[href^="/bookings/"] {
+    display: block;
+    background: linear-gradient(to right, #E61E4D 0%, #E31C5F 50%, #D70466 100%);
+    color: white;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    text-decoration: none;
+    margin: 10px 0 16px;
+    text-align: center;
+    width: 200px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+    transition: transform 0.2s, box-shadow 0.2s;
+    letter-spacing: 0.5px;
+    text-transform: none;
+    border: none;
+    position: relative;
+    overflow: hidden;
+  }
+
+  a[href^="/bookings/"]:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.16);
+  }
+
+  a[href^="/bookings/"]:active {
+    transform: translateY(0);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+  }
+
+  hr {
+    border: none;
+    height: 1px;
+    background-color: var(--airbnb-light-gray);
+    margin: var(--section-spacing) 0;
+  }
+
+  /* Review section */
+  .review-section {
+    margin-bottom: var(--section-spacing);
+  }
+
+  .review-section h2 {
+    font-size: 22px;
+    margin-bottom: 24px;
+  }
+
+  .review-form {
+    margin-bottom: 32px;
+    border: 1px solid var(--airbnb-light-gray);
+    padding: 24px;
+    border-radius: 12px;
+    background-color: #fff;
+  }
+
+  .review-form textarea {
+    width: 100%;
+    border: 1px solid var(--airbnb-light-gray);
+    border-radius: 8px;
+    padding: 12px;
+    margin-top: 5px;
+    font-family: var(--airbnb-font);
+    resize: none;
+  }
+
+  /* Make sure to preserve the starability rating system */
+  .starability-coinFlip {
+    margin-top: 16px;
+  }
+
+  .submit-review {
+    background-color: var(--airbnb-red);
+    color: white;
+    border: none;
+    width: min-content;
+    padding: 7px 16px;
+    border-radius: 8px;
+    font-weight: 500;
+    cursor: pointer;
+    /* margin-top: 5px; */
+    transition: background-color 0.2s;
+  }
+
+  .submit-review:hover {
+    background-color: #E00B41;
+  }
+
   .review-box-parent {
-    grid-template-columns: 1fr;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
   }
-}
 
-/* For small screens */
-@media (max-width: 576px) {
-  .review-box-parent {
+  .review-box {
+    padding: 24px;
+    border-radius: 12px;
+    background-color: #FFFFFF;
+    position: relative;
+    border: 1px solid var(--airbnb-light-gray);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  }
+
+  .author-name-box {
     display: flex;
     flex-direction: column;
   }
-}
+
+  .author-name-box h5 {
+    margin: 0;
+    font-weight: 600;
+    font-size: 16px;
+  }
+
+  .review-box i {
+    display: block;
+    /* margin-top: 16px; */
+    color: var(--airbnb-dark);
+  }
+
+  .delete-review {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background-color: transparent;
+    color: var(--airbnb-gray);
+    border: none;
+    cursor: pointer;
+    font-size: 0;
+    width: 24px;
+    height: 24px;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+  }
+
+  .delete-review:hover {
+    opacity: 1;
+  }
+
+  /* Delete icon */
+  .delete-review::before {
+    content: "×";
+    font-size: 24px;
+    line-height: 24px;
+    display: block;
+  }
+
+
+
+
+  /* Map section */
+  .map-section {
+    margin-top: var(--section-spacing);
+    margin-bottom: var(--section-spacing);
+  }
+
+  .map-section h3 {
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+
+  .map-section p {
+    margin-bottom: 16px;
+    color: var(--airbnb-gray);
+  }
+
+  #map {
+    height: 320px;
+    width: 100%;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--airbnb-light-gray);
+  }
+
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .show-section {
+      padding: 16px;
+    }
+
+    .show-image {
+      height: 300px;
+    }
+
+    #map {
+      height: 250px;
+    }
+
+    .review-box-parent {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* For small screens */
+  @media (max-width: 576px) {
+    .review-box-parent {
+      display: flex;
+      flex-direction: column;
+    }
+  }
 </style>
 
 
 <section class="show-section">
 
-    <h2>
-        <%= data.title %>
-    </h2>
+  <h2>
+    <%= data.title %>
+  </h2>
 
-    <img class="show-image" src="<%= data.photos.path %>" alt="<%=data.photos.filename  %>">
+  <img class="show-image" src="<%= data.photos.path %>" alt="<%=data.photos.filename  %>">
 
-    <h3 class="title-address">
-        <%= data.propertyType %> in <%= data.address %>
-    </h3>
+  <h3 class="title-address">
+    <%= data.propertyType %> in <%= data.address %>
+  </h3>
 
 
 
-    <p class="space-details">
-        <%= data.maxGuests %> guests &nbsp; &bull; &nbsp;<%= data.bedrooms %> bedrooms &nbsp; &bull; &nbsp;<%= data.beds
-                    %> beds &nbsp; &bull; &nbsp;<%= data. bathroom %> bathrooms
-    </p>
+  <p class="space-details">
+    <%= data.maxGuests %> guests &nbsp; &bull; &nbsp;<%= data.bedrooms %> bedrooms &nbsp; &bull; &nbsp;<%= data.beds %>
+          beds &nbsp; &bull; &nbsp;<%= data. bathroom %> bathrooms
+  </p>
 
-    <div class="host-group">
-        <img src="<%= data.host.avatar %>" alt="">
-        <h4>Hosted by <%= data.host.username %>
+  <div class="host-group">
+    <img src="<%= data.host.avatar %>" alt="">
+    <h4>Hosted by <%= data.host.username %>
+  </div>
+  </h4>
+
+  <% if(currUser && currUser._id.equals(data.host._id)){ %>
+    <div class="buttons">
+      <a class="update-listing btn" href="/listing/<%= data._id %>/edit">update</a>
+      <form class="delete-form-button" action="/listing/<%= data._id %>?_method=DELETE" method="post">
+        <button class="delete-listing btn" type="submit">delete</button>
+      </form>
     </div>
-    </h4>
+    <% } %> <!-- we must handle these thing in frontend as well as backend -->
+      <!-- <hr> -->
 
-    <% if(currUser && currUser._id.equals(data.host._id)){ %>
-        <div class="buttons">
-            <a class="update-listing btn" href="/listing/<%= data._id %>/edit">update</a>
-            <form class="delete-form-button" action="/listing/<%= data._id %>?_method=DELETE" method="post">
-                <button class="delete-listing btn" type="submit">delete</button>
-            </form>
-        </div>
-        <% } %> <!-- we must handle these thing in frontend as well as backend -->
-            <!-- <hr> -->
+      <div class="description">
+        <h5>Description</h5>
 
-            <div class="description">
-                <h5>Description</h5>
+        <p>
+          <%= data.description %>
+        </p>
 
-                <p>
-                    <%= data.description %>
-                </p>
-
-            </div>
+      </div>
 
 
-            <a href="/bookings/<%= data._id %>">reserve</a>
+      <a href="/bookings/<%= data._id %>">reserve</a>
 
-            <hr>
+      <hr>
 
-            <section class="review-section">
-
-
-                <h2>Review section</h2>
-
-                <% if(currUser){ %>
-                    <form class="review-form" action="/listing/<%= data._id %>/review" method="post">
-                        <fieldset class="starability-coinFlip">
-                            <input type="radio" id="no-rate" class="input-no-rate" name="rating" value="1" checked
-                                aria-label="No rating." />
-                            <input type="radio" id="first-rate1" name="rating" value="1" />
-                            <label for="first-rate1" title="Terrible">1 star</label>
-                            <input type="radio" id="first-rate2" name="rating" value="2" />
-                            <label for="first-rate2" title="Not good">2 stars</label>
-                            <input type="radio" id="first-rate3" name="rating" value="3" />
-                            <label for="first-rate3" title="Average">3 stars</label>
-                            <input type="radio" id="first-rate4" name="rating" value="4" />
-                            <label for="first-rate4" title="Very good">4 stars</label>
-                            <input type="radio" id="first-rate5" name="rating" value="5" />
-                            <label for="first-rate5" title="Amazing">5 stars</label>
-                        </fieldset>
+      <section class="review-section">
 
 
-                        <textarea cols="15" rows="8" name="comment" id="" required></textarea>
-                        <br>
-                        <button class="submit-review" type="submit">submit</button>
-                    </form>
+        <h2>Review section</h2>
+
+        <% if(currUser){ %>
+          <form class="review-form" action="/listing/<%= data._id %>/review" method="post">
+            <fieldset class="starability-coinFlip">
+              <input type="radio" id="no-rate" class="input-no-rate" name="rating" value="1" checked
+                aria-label="No rating." />
+              <input type="radio" id="first-rate1" name="rating" value="1" />
+              <label for="first-rate1" title="Terrible">1 star</label>
+              <input type="radio" id="first-rate2" name="rating" value="2" />
+              <label for="first-rate2" title="Not good">2 stars</label>
+              <input type="radio" id="first-rate3" name="rating" value="3" />
+              <label for="first-rate3" title="Average">3 stars</label>
+              <input type="radio" id="first-rate4" name="rating" value="4" />
+              <label for="first-rate4" title="Very good">4 stars</label>
+              <input type="radio" id="first-rate5" name="rating" value="5" />
+              <label for="first-rate5" title="Amazing">5 stars</label>
+            </fieldset>
 
 
+            <textarea cols="15" rows="8" name="comment" id="" required></textarea>
+            <br>
+            <button class="submit-review" type="submit">submit</button>
+          </form>
+
+
+
+          <% } %>
+
+            <div class="review-box-parent">
+
+              <% if(data.comments && data.comments.length===0){ %>
+                <p>No review posted</p>
+
+                <% } else{%>
+                  <% for(let item of data.comments){ %>
+                    <div class="review-box">
+                      <div class="host-group">
+                        <img src="<%= item.author.avatar %>" alt="">
+                        <div class="author-name-box">
+                          <h5>@<%= item.author.username %>
+                          </h5>
+                          <p class="starability-result" data-rating="<%= item.rating %>">
+                          </p>
+                        </div>
+                      </div>
+
+                      <i>
+                        <%= item.comment %>
+                      </i>
+
+                      <form action="/listing/<%= data._id %>/review/<%= item._id %>?_method=DELETE" method="post">
+                        <button class="delete-review">Delete</button>
+                      </form>
+
+
+                    </div>
 
                     <% } %>
-
-                        <div class="review-box-parent">
-
-                            <% if(data.comments && data.comments.length===0){ %>
-                                <p>No review posted</p>
-
-                                <% } else{%>
-                                    <% for(let item of data.comments){ %>
-                                        <div class="review-box">
-                                            <div class="host-group">
-                                                <img src="<%= item.author.avatar %>" alt="">
-                                                <div class="author-name-box">
-                                                    <h5>@<%= item.author.username %>
-                                                    </h5>
-                                                    <p class="starability-result" data-rating="<%= item.rating %>">
-                                                    </p>
-                                                </div>
-                                            </div>
-
-                                            <i>
-                                                <%= item.comment %>
-                                            </i>
-
-                                            <form
-                                                action="/listing/<%= data._id %>/review/<%= item._id %>?_method=DELETE"
-                                                method="post">
-                                                <button class="delete-review">Delete</button>
-                                            </form>
-
-
-                                        </div>
-                                        <% } %>
-                                            <% } %>
-
-
-
-
-                        </div>
-
-            </section>
-
-            <div class="map-section">
-                <h3>Where you'll be</h3>
-                <p>
-                    <%= data.address %>
-                </p>
-                <div id="map"></div>
-
-
-                <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-
-                <script>
-                    // Initialize the map
-
-                    lat = <%= data.location.lat %>;
-                    lng = <%= data.location.lng %>;
-
-                    var map = L.map('map', {
-                        center: [lat, lng],
-                        zoom: 13
-                    }).setView([lat, lng], 13); // Delhi example
-
-                    // Add OpenStreetMap tiles
-                    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                        maxZoom: 19,
-                        attribution: '&copy; OpenStreetMap contributors'
-                    }).addTo(map);
-
-                    // Add a marker
-                    L.marker([lat, lng]).addTo(map)
-                        .bindPopup("here you'll find")
-                        .openPopup();
-                </script>
+                      <% } %>
 
             </div>
-</section>
+
+            <div class="map-section">
+              <h3>Where you'll be</h3>
+              <p>
+                <%= data.address %>
+              </p>
+              <div id="map" data-lat="<%= data.location.lat %>" data-lng="<%= data.location.lng %>"></div>
+            </div>
+
+      </section>
+
+
+
+      <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+
+
+      <script>
+        const mapElement = document.getElementById('map');
+        const lat = parseFloat(mapElement.dataset.lat);
+        const lng = parseFloat(mapElement.dataset.lng);
+
+        var map = L.map('map', {
+          center: [lat, lng],
+          zoom: 13
+        }).setView([lat, lng], 13);
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          maxZoom: 19,
+          attribution: '&copy; OpenStreetMap contributors'
+        }).addTo(map);
+
+        // Add a marker
+        L.marker([lat, lng]).addTo(map)
+          .bindPopup("here you'll find")
+          .openPopup();
+      </script>
