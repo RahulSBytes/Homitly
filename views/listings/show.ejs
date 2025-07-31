@@ -35,6 +35,10 @@
     font-size: 22px;
     font-weight: 600;
     margin-bottom: 8px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    line-height: 1.3;
   }
 
   .space-details {
@@ -270,8 +274,6 @@
 
 
 
-
-  /* Map section */
   .map-section {
     margin-top: var(--section-spacing);
     margin-bottom: var(--section-spacing);
@@ -296,8 +298,13 @@
     border: 1px solid var(--airbnb-light-gray);
   }
 
-  /* Responsive adjustments */
+
   @media (max-width: 768px) {
+    .title-address {
+      font-size: 20px;
+    }
+
+
     .show-section {
       padding: 16px;
     }
@@ -315,11 +322,15 @@
     }
   }
 
-  /* For small screens */
   @media (max-width: 576px) {
     .review-box-parent {
       display: flex;
       flex-direction: column;
+    }
+
+
+    .title-address {
+      font-size: 18px;
     }
   }
 </style>
