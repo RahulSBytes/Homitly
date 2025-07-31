@@ -26,7 +26,7 @@
 
   .listing-img {
     width: 100%;
-    height: 200px;
+    height: 170px;
     object-fit: cover;
     border-radius: 12px;
     transition: transform 0.5s ease;
@@ -55,9 +55,9 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    color: #717171;
+    color: #afafaf;
     font-weight: 400;
-    font-size: 14px;
+    font-size: 12px;
     margin: 0;
   }
 
@@ -84,9 +84,9 @@
 
   .card-container {
     position: relative;
-    flex: 1 1 220px;
-    max-width: 270px;
-    min-width: 200px;
+    flex: 1 1 200px;
+    max-width: 230px;
+    min-width: 180px;
   }
 
 
@@ -103,14 +103,109 @@
     color: #484848;
   }
 
+
+  /* @@@@@@@@@@@@@@@@@@@ */
+  .empty-state-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 260px;
+    padding: 2.5rem 1rem;
+    text-align: center;
+    margin: 1rem 0;
+  }
+  
+  .empty-state-icon {
+    font-size: 3rem;
+    color: #dddddd;
+    margin-bottom: 1.25rem;
+  }
+  
+  .empty-state-title {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #222222;
+    margin-bottom: 0.5rem;
+  }
+  
+  .empty-state-message {
+    font-size: 1rem;
+    color: #717171;
+    max-width: 450px;
+    line-height: 1.5;
+    margin-bottom: 1.5rem;
+  }
+  
+  .empty-state-button {
+    background-color: #FF385C;
+    color: white;
+    font-size: 0.95rem;
+    font-weight: 500;
+    padding: 0.7rem 1.4rem;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    text-decoration: none;
+    display: inline-block;
+  }
+  
+  .empty-state-button:hover {
+    background-color: #E31C5F;
+    transform: translateY(-2px);
+  }
+  
+  @media (max-width: 640px) {
+    .empty-state-container {
+      min-height: 200px;
+      padding: 2rem 1rem;
+    }
+    
+    .empty-state-icon {
+      font-size: 2.5rem;
+    }
+    
+    .empty-state-title {
+      font-size: 1.25rem;
+    }
+  }
+
+
 </style>
 
 <section>
 
   <% if(data.length===0){ %>
-    <div class="no-item">
-      <p class="no-item">no item</p>
-    </div>
+    <div class="empty-state-container">
+  <% 
+    // Set defaults
+    let icon = "fa-solid fa-circle-exclamation";
+    let title = "Nothing found";
+    let message = "There's nothing to display at the moment.";
+    let buttonText = "Explore Homitly";
+    let buttonLink = "/listing";
+    
+    // Customize based on current page
+    if (currentPage === 'listing' || currentPage === 'search') {
+      icon = "fa-solid fa-house-circle-exclamation";
+      title = "No listings found";
+      message = "There are currently no properties available that match your criteria.";
+      buttonText = "Explore all properties";
+    } else if (currentPage === 'wishlist') {
+      icon = "fa-solid fa-heart";
+      title = "Your wishlist is empty";
+      message = "Save properties you love by clicking the heart icon on any listing.";
+      buttonText = "Discover places";
+    }
+  %>
+  
+  <i class="<%= icon %> empty-state-icon"></i>
+  <h3 class="empty-state-title"><%= title %></h3>
+  <p class="empty-state-message"><%= message %></p>
+  <a href="<%= buttonLink %>" class="empty-state-button"><%= buttonText %></a>
+</div>
     <% }else{ %>
 
       <% for(let item of data){ %>
@@ -126,7 +221,7 @@
               </p>
               <p class="price-text">
                 <span>&#8377;<%= item.pricePerNight %> per night</span>
-                <span>&#9733; <%= avgrating%></span>
+                <span>&#9733; <%= item.avgrating%></span>
               </p>
             </div>
           </a>

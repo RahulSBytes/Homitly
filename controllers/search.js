@@ -1,4 +1,5 @@
 import listingModel from "../models/Listing.js";
+import dataWithAvgRating from "../utils/avgRating.js";
 // import expressError from "../utility/errorClass.js";
 
 export async function searchcontroller(req, res) {
@@ -24,11 +25,10 @@ export async function searchcontroller(req, res) {
         { address: { $regex: textRegex } },
         { amenities: { $in: [query] } },
       ],
-    });
+    }).populate("comments");
 
     res.render("listings/index.ejs", {
-      data: listings,
-      avgrating: 0,
+      data: dataWithAvgRating(listings),
       query: query,
       message: listings.length ? null : "No listings found.",
     });

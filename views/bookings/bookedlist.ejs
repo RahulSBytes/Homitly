@@ -268,32 +268,108 @@
 
 
 
-    div.no-item{
-    display: flex;
-    width: 100%;
-    height: 100%;
-    justify-content: center;
-    /* border: 2px solid green; */
-  }
+    div.no-item {
+        display: flex;
+        width: 100%;
+        height: 100%;
+        justify-content: center;
+        /* border: 2px solid green; */
+    }
 
-  p.no-item{
-    font-size: 1.5rem;
-    font-weight: 600;
-    color: #484848;
-  }
+    p.no-item {
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: #484848;
+    }
+
+
+    /* @@@@@@@@@@@@@@@@@@@ */
+
+    .empty-state-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        min-height: 260px;
+        padding: 2.5rem 1rem;
+        text-align: center;
+        margin: 1rem 0;
+    }
+
+    .empty-state-icon {
+        font-size: 3rem;
+        color: #dddddd;
+        margin-bottom: 1.25rem;
+    }
+
+    .empty-state-title {
+        font-size: 1.4rem;
+        font-weight: 600;
+        color: #222222;
+        margin-bottom: 0.5rem;
+    }
+
+    .empty-state-message {
+        font-size: 1rem;
+        color: #717171;
+        max-width: 450px;
+        line-height: 1.5;
+        margin-bottom: 1.5rem;
+    }
+
+    .empty-state-button {
+        background-color: #FF385C;
+        color: white;
+        font-size: 0.95rem;
+        font-weight: 500;
+        padding: 0.7rem 1.4rem;
+        border-radius: 8px;
+        border: none;
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+        text-decoration: none;
+        display: inline-block;
+    }
+
+    .empty-state-button:hover {
+        background-color: #E31C5F;
+        transform: translateY(-2px);
+    }
+
+    @media (max-width: 640px) {
+        .empty-state-container {
+            min-height: 200px;
+            padding: 2rem 1rem;
+        }
+
+        .empty-state-icon {
+            font-size: 2.5rem;
+        }
+
+        .empty-state-title {
+            font-size: 1.25rem;
+        }
+    }
 </style>
 
 <section class="bookinglist">
 
     <div class="container">
-        <h1 class=".page-title">Your Bookings</h1>
-
 
         <% if(bookings.length===0){ %>
-            <div class="no-item">
-                <p class="no-item">no item</p>
+
+            <div class="empty-state-container">
+                <i class="fa-solid fa-calendar-xmark empty-state-icon"></i>
+                <h3 class="empty-state-title">No bookings yet</h3>
+                <p class="empty-state-message">You haven't made any bookings yet. Start planning your next getaway!</p>
+                <a href="/listing" class="empty-state-button">
+                    <%= Find places to stay%>
+                </a>
             </div>
+
             <% }else{ %>
+                <h1 class=".page-title">Your Bookings</h1>
                 <% for(let item of bookings){ %>
 
                     <div class="booking-card">

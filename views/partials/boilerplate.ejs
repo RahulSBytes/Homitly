@@ -37,15 +37,22 @@
 
         <!-- flash msg -->
         <% if(success && success.length){ %>
-            <p class="flash">
-                <%= success %>
-            </p>
+            <div class="flash">
+                <p>
+                    <%= success %>
+                </p>
+                <span class="cross">x</span>
+            </div>
+
             <% } %>
 
                 <% if(error && error.length){ %>
-                    <p class="flash">
-                        <%= error %>
-                    </p>
+                    <div class="flash">
+                        <p>
+                            <%= error %>
+                        </p>
+                                <span class="cross">x</span>
+                    </div>
                     <% } %>
 
 
@@ -61,6 +68,15 @@
                                 href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
                                 integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ=="
                                 crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+                            <script>
+                                let flash = document.querySelector('.flash')
+                                let cross = document.querySelector('.cross')
+
+                                cross.addEventListener('click', () => {
+                                    flash.remove()
+                                })
+                            </script>
 </body>
 
 </html>

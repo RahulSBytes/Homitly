@@ -4,9 +4,6 @@ import userModel from "../models/User.js";
 import expressError from "../utility/errorClass.js";
 import { emailSender } from "../utils/email.js";
 
-// import puppeteer from 'puppeteer';
-// import nodemailer from 'nodemailer';
-
 export function renderBookingForm(req, res) {
   res.render("bookings/booking.ejs", { listingId: req.params.id });
 }

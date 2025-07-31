@@ -1,5 +1,6 @@
 import listingModel from "../models/Listing.js";
 import userModel from "../models/User.js";
+import dataWithAvgRating from "../utils/avgRating.js";
 
 export async function registeredUser(req, res, next) {
   // console.log(req.file, ".......", req.body);
@@ -41,13 +42,13 @@ export function logIn(req, res) {
 }
 
 export function loginform(req, res) {
-  res.locals.currentPage = 'login'
+  res.locals.currentPage = "login";
 
   res.render("users/login.ejs");
 }
 
 export function registerform(req, res) {
-  res.locals.currentPage = 'register'
+  res.locals.currentPage = "register";
   res.render("users/register.ejs");
 }
 
@@ -65,10 +66,8 @@ export async function addToWishlist(req, res) {
 }
 
 export async function userWishlist(req, res) {
-  res.locals.currentPage = 'wishlist'
-  let  avgrating=0;
+  res.locals.currentPage = "wishlist";
   let data = await userModel.findById(req.user._id);
-  let wishlistItem = await listingModel.find({ _id: { $in: data.wishlist } });
-
-  res.render("listings/index.ejs", { data: wishlistItem, avgrating });
+  let wishlistItem = await listingModel.find({ _id: { $in: data.wishlist } }).populate("comments");
+  res.render("listings/index.ejs", { data: dataWithAvgRating(wishlistItem) });
 }

@@ -1,29 +1,16 @@
 import listingModel from "../models/Listing.js";
-// import userModel from "../models/User.js";
+import dataWithAvgRating from "../utils/avgRating.js";
 
 export async function index(req, res) {
-  res.locals.currentPage = 'listings'
-  // console.log(res.locals.currUser ? res.locals.currUser : "its null");
-
-  const data = await listingModel.find().populate("comments");
+  res.locals.currentPage = "listings";
   res.locals.isHome = true;
-  // calculaating average rating
-  let avgrating = 0;
-  let sum = 0;
-  /*
-  if (!(data[0].comments && data[0].comments.length === 0)) {
-    for (let i = 0; i < data[0].comments.length; i++) {
-      sum = data[0].comments[i].rating + sum;
-    }
-    avgrating = sum / data[0].comments.length;
-  }
- */
-  // console.log(data[0].comments[0].rating);
-  res.render("listings/index.ejs", { data, avgrating});
+  const data = await listingModel.find().populate("comments");
+  res.render("listings/index.ejs", { data: dataWithAvgRating(data) });
 }
 
+
 export async function createListingGet(req, res) {
-    res.locals.currentPage = 'newlisting'
+  res.locals.currentPage = "newlisting";
 
   // no need to use async or to wrap with asyncWrapper coz no async task is being done here.
   res.render("listings/new");
@@ -99,6 +86,3 @@ export async function updateListing(req, res) {
     next(error);
   }
 }
-
-
-

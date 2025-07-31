@@ -11,15 +11,6 @@
   --section-spacing: 32px;
 }
 
-/* body {
-  font-family: var(--airbnb-font);
-  color: var(--airbnb-dark);
-  line-height: 1.5;
-  margin: 0;
-  padding: 0;
-  background-color: #fff;
-} */
-
 .show-section {
   max-width: 1120px;
   margin: 0 auto;
@@ -48,6 +39,7 @@
 }
 
 .space-details {
+  margin-top: 0.8rem;
   font-size: 16px;
   color: var(--airbnb-dark);
   margin-bottom: 24px;
@@ -60,10 +52,10 @@
 }
 
 .host-group img {
-  width: 56px;
-  height: 56px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
-  margin-right: 12px;
+  /* margin-right: 7px; */
   object-fit: cover;
 }
 
@@ -74,35 +66,44 @@
 
 .buttons {
   display: flex;
+  align-items: center;
   gap: 12px;
+  margin-top: 1.5rem;
   margin-bottom: var(--section-spacing);
 }
 
 .btn {
   display: inline-block;
-  padding: 8px 16px;
+  height: 2rem;
+  width: 4rem;
+  margin-top: 0.2rem;
   border-radius: 8px;
   font-size: 14px;
   font-weight: 500;
   text-decoration: none;
   cursor: pointer;
   transition: all 0.2s ease;
+  background-color: #fff;
 }
 
 .update-listing {
-  background-color: #fff;
+  padding-top: 5px;
   color: var(--airbnb-dark);
   border: 1px solid var(--airbnb-dark);
 }
 
 .delete-listing {
-  background-color: #fff;
   color: var(--airbnb-red);
   border: 1px solid var(--airbnb-red);
 }
 
-.update-listing:hover, .delete-listing:hover {
+/* .update-listing:hover, .delete-listing:hover {
   background-color: #f7f7f7;
+} */
+
+
+.delete-form-button{
+  background-color: white ;
 }
 
 .description {
@@ -123,17 +124,17 @@
   color: var(--airbnb-dark);
 }
 
-/* Redesigned Reserve Button */
+
 a[href^="/bookings/"] {
   display: block;
   background: linear-gradient(to right, #E61E4D 0%, #E31C5F 50%, #D70466 100%);
   color: white;
-  padding: 16px 32px;
+  padding: 12px 24px;
   border-radius: 8px;
   font-size: 16px;
   font-weight: 600;
   text-decoration: none;
-  margin: 32px 0;
+  margin: 10px 0 16px;
   text-align: center;
   width: 200px;
   box-shadow: 0 6px 16px rgba(0,0,0,0.12);
@@ -271,6 +272,9 @@ hr {
   display: block;
 }
 
+
+
+
 /* Map section */
 .map-section {
   margin-top: var(--section-spacing);
@@ -353,8 +357,8 @@ hr {
     <% if(currUser && currUser._id.equals(data.host._id)){ %>
         <div class="buttons">
             <a class="update-listing btn" href="/listing/<%= data._id %>/edit">update</a>
-            <form action="/listing/<%= data._id %>?_method=DELETE" method="post">
-                <a class="delete-listing btn" type="submit">delete</a>
+            <form class="delete-form-button" action="/listing/<%= data._id %>?_method=DELETE" method="post">
+                <button class="delete-listing btn" type="submit">delete</button>
             </form>
         </div>
         <% } %> <!-- we must handle these thing in frontend as well as backend -->
@@ -452,7 +456,10 @@ hr {
                     <%= data.address %>
                 </p>
                 <div id="map"></div>
+
+
                 <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
                 <script>
                     // Initialize the map
 
