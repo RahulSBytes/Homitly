@@ -92,9 +92,7 @@ export const listingSchema = mongoose.Schema({
 
 listingSchema.post("findOneAndDelete", async function (doc) {
   if (doc.comments.length) {
-    // console.log(doc) // the whole document whose comments to be deleted
     let result = await reviewModel.deleteMany({ _id: { $in: doc.comments } });
-    // console.log(result);  //{ comment: 'this is', rating: '3' }
   }
 });
 

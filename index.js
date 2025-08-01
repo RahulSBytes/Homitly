@@ -115,6 +115,5 @@ app.use((req, res, next) => {
 
 app.use((err, req, res, next) => {
   let { status = 500, message = "something broke" } = err;
-  // console.log(err);
   res.status(status).send(message);
 });

@@ -7,7 +7,6 @@ import { fileURLToPath } from "url";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 export async function emailSender(data, user) {
-
   try {
     const html = await ejs.renderFile(
       path.join(__dirname, "../views/bookings/middle.ejs"),
@@ -33,7 +32,7 @@ export async function emailSender(data, user) {
 
     await transporter.sendMail({
       from: process.env.COZY_EMAIL,
-      to: "non.personal786@gmail.com",
+      to: user.email,
       subject: "Your Booking Confirmation",
 
       // ---------------
@@ -55,7 +54,6 @@ export async function emailSender(data, user) {
     The Cozy Stay Team</p>
   `,
 
-
       attachments: [
         {
           filename: "booking-confirmation.pdf",
@@ -64,7 +62,6 @@ export async function emailSender(data, user) {
       ],
     });
   } catch (err) {
-    console.error("EmailSender failed:", err.message);
     throw new Error("Something Broke: ", err.message);
   }
 }

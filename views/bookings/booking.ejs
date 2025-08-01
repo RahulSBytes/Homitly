@@ -1,15 +1,165 @@
+<style>
+  /* Booking section styling */
+  .booking {
+    max-width: 550px;
+    margin: 0 auto;
+    padding: 24px;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    background-color: white;
+  }
+  
+  .booking h2 {
+    font-size: 22px;
+    font-weight: 600;
+    color: #222222;
+    margin-bottom: 24px;
+    text-align: center;
+  }
+  
+  .booking form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .booking label {
+    font-size: 14px;
+    margin-top: 1.2rem;
+    font-weight: 500;
+    color: #222222;
+    margin-bottom: 8px;
+    text-transform: capitalize;
+  }
+  
+  .booking input {
+    height: 48px;
+    padding: 0 16px;
+    border: 1px solid #DDDDDD;
+    border-radius: 8px;
+    font-size: 16px;
+    margin-bottom: 20px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .booking input:focus {
+    border-color: #FF385C;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(255, 56, 92, 0.2);
+  }
+  
+  .booking input[type="date"] {
+    color: #222222;
+    font-family: inherit;
+  }
+  
+  .booking p {
+    font-size: 14px;
+    color: #717171;
+    margin-top: -4px;
+    margin-bottom: 12px;
+    line-height: 1.4;
+  }
+  
+  /* Policy sections */
+  .policy, .rule {
+    padding: 16px;
+    border: 1px solid #DDDDDD;
+    border-radius: 8px;
+    margin-bottom: 20px;
+  }
+  
+  .policy h3, .rule h3 {
+    font-size: 16px;
+    font-weight: 600;
+    color: #222222;
+    margin-bottom: 8px;
+  }
+  
+  .policy p, .rule p {
+    font-size: 14px;
+    color: #717171;
+    line-height: 1.5;
+    margin-bottom: 0;
+  }
+  
+  /* Caution section */
+  .caution {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px;
+    background-color: #FFF8F9;
+    border-radius: 8px;
+    margin-bottom: 24px;
+  }
+  
+  .caution i {
+    margin-top: 2px;
+    flex-shrink: 0;
+  }
+  
+  .caution p {
+    margin: 0;
+    font-size: 14px;
+    color: #222222;
+    line-height: 1.5;
+  }
+  
+  /* Submit button */
+  .booking button {
+    background: linear-gradient(to right, #E61E4D 0%, #E31C5F 50%, #D70466 100%);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    height: 48px;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  .booking button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+  }
+  
+  .booking button:active {
+    transform: translateY(0);
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 576px) {
+    .booking {
+      padding: 16px;
+      margin: 0 16px;
+    }
+    
+    .booking input {
+      height: 44px;
+    }
+    
+    .booking button {
+      height: 44px;
+    }
+  }
+</style>
+
 <section class="booking">
     <h2>Request to book</h2>
     <form action="/bookings/<%= listingId %>" method="post">
-        <label for="">check-in</label>
-        <input type="date" name="checkin">
-        <label for="">checkout</label>
-        <input type="date" name="checkout">
-        <label for="">guests</label>
-        <input type="number" name="numberOfGuests">
-        <label for="">Phone number</label>
+        <label for="checkin">check-in</label>
+        <input type="date" id="checkin" name="checkin" required>
+        
+        <label for="checkout">checkout</label>
+        <input type="date" id="checkout" name="checkout" required>
+        
+        <label for="guests">no. of guests</label>
+        <input type="number" id="guests" name="numberOfGuests" min="1" required>
+        
+        <label for="mobile">Phone number</label>
         <p>Add and confirm your phone number to get trip updates.</p>
-        <input type="text" name="mobileNumber">
+        <input type="text" id="mobile" name="mobileNumber" required>
 
         <div class="policy">
             <h3>Cancellation policy</h3>
@@ -25,13 +175,13 @@
             <p>We ask every guest to remember a few simple things about what makes a great guest. Follow the house rules
                 Treat your Host's home like your own</p>
         </div>
+        
         <div class="caution">
             <i class="fa-regular fa-clock fa-spin fa-lg" style="color: #e2acbe;"></i>
-            <p>The Host will need to accept this request. You’ll pay now, but will get a full refund if your reservation
+            <p>The Host will need to accept this request. You'll pay now, but will get a full refund if your reservation
                 isn't confirmed within 24 hours.</p>
         </div>
 
         <button type="submit">proceed</button>
     </form>
-
 </section>
