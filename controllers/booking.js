@@ -23,10 +23,11 @@ export async function createBooking(req, res) {
   let { pricePerNight = 0, cleaningFee = 0 } = listingdata;
 
   let payableAmount = Math.floor(
-    pricePerNight * numberofdays + cleaningFee + 300
+   ( pricePerNight * numberofdays) + cleaningFee + 300
   );
 
   let tax = Math.floor((12 / 100) * payableAmount);
+  console.log("..........",tax);
 
   let sessionObj = {
     ...req.body,
