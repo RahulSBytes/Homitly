@@ -4,7 +4,7 @@ A feature-rich, full-stack web application inspired by Airbnb, built with modern
 
 ## 🌐 Live Demo
 
-**[Visit Homitly](https://homitly.onrender.com/))**
+**[Visit Homitly](https://homitly.onrender.com/)**
 
 ## 📋 Table of Contents
 
