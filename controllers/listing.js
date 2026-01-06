@@ -37,7 +37,7 @@ export async function showListing(req, res) {
         path: "author",
       },
     })
-    .populate("host"); // chainning posible
+    .populate("host"); // chainning possible
 
   if (!data) {
     req.flash("error", "accessed listing is not available");

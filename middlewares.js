@@ -63,7 +63,7 @@ export function validateBooking(req, res, next) {
   const { error } = bookingJoiSchema.validate(req.body, { abortEarly: false });
   if (error) {
     req.flash("error", error.message);
-    return res.redirect("/bookings");
+    return res.redirect(`/bookings/${req.params.listingid}`);
   } else {
     next();
   }
