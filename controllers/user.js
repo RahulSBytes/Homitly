@@ -35,7 +35,7 @@ export function logOut(req, res, next) {
 export function logIn(req, res) {
   const redirectUrl = res.locals.returnTo || "/listing";
   delete req.session.returnTo;
-  req.flash("success", "Welcome back to cozyStay!");
+  req.flash("success", "Welcome back to Homitly!");
   res.redirect(redirectUrl);
 }
 

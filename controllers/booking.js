@@ -27,7 +27,6 @@ export async function createBooking(req, res) {
   );
 
   let tax = Math.floor((12 / 100) * payableAmount);
-  console.log("..........",tax);
 
   let sessionObj = {
     ...req.body,

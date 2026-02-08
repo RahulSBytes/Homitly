@@ -2,7 +2,7 @@
   "engines": {
     "node": "22.16.0"
   },
-  "name": "cozystay",
+  "name": "Homitly",
   "version": "1.0.0",
   "main": "index.js",
   "type": "module",

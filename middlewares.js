@@ -41,7 +41,6 @@ export async function isOwner(req, res, next) {
 export async function isReviewAuthor(req, res, next) {
   let { id, reviewId } = req.params;
   const reviewData = await reviewModel.findById(reviewId);
-  // console.log("--------",reviewData)
   if (!res.locals.currUser._id.equals(reviewData.author)) {
     req.flash("error", "you don't have permission");
     return res.redirect(`/listing/${id}`);
